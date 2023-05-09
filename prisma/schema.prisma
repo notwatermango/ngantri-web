@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+    // TODO: migrate to postgre
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model Account {
+    id       String @id @default(cuid())
+    email    String @unique
+    password String
+    role     Int
+    // TODO: migrate to postgre
+    // role     Role   @default(ADMIN)
+}
+
+// TODO: migrate to postgre
+// enum Role {
+//     USER
+//     ADMIN
+// }
