@@ -21,9 +21,11 @@
 - database dashboard `npm run db`
 - schema update `npm run pushdb`
 
-## Styling
+## Note
 
-- tailwind example here [Flowbite](https://flowbite.com/docs/components/forms/)
+- styling tailwind example here [Flowbite](https://flowbite.com/docs/components/forms/)
+- commit sebanyak2nya
+- pull request sedikit2nya
 
 ## Stack
 
