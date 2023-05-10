@@ -1,8 +1,10 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import AppLayout from "~/components/app/AppLayout";
 import type { AuthNextPage } from "~/types/pages";
 
-const QRPage: AuthNextPage = () => {
+const ConfirmationPage: AuthNextPage = () => {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -13,7 +15,7 @@ const QRPage: AuthNextPage = () => {
       <AppLayout>
         <button>cancel</button>
         <h1>Confirmation</h1>
-        <div>Store:</div>
+        <div>Store: {router.query.merchantId}</div>
         <p>Test</p>
         <div>Message:</div>
         <p>Test Input message</p>
@@ -23,9 +25,9 @@ const QRPage: AuthNextPage = () => {
   );
 };
 
-QRPage.auth = {
+ConfirmationPage.auth = {
   role: "user",
   unauthorized: "/",
 };
 
-export default QRPage;
+export default ConfirmationPage;
