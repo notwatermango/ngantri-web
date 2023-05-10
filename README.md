@@ -26,6 +26,7 @@
 - styling tailwind example here [Flowbite](https://flowbite.com/docs/components/forms/)
 - commit sebanyak2nya
 - pull request sedikit2nya
+- test qr https://qrplanet.com/#text
 
 ## Stack
 
