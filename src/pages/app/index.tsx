@@ -1,7 +1,15 @@
 import Head from "next/head";
-import { AuthNextPage } from "~/types/pages";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import AppLayout from "~/components/app/AppLayout";
+import type { AuthNextPage } from "~/types/pages";
 
 const AppHome: AuthNextPage = () => {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/app/qr");
+  });
+
   return (
     <>
       <Head>
@@ -9,9 +17,9 @@ const AppHome: AuthNextPage = () => {
         <meta name="description" content="App home" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1>User App</h1>
-      </main>
+      <AppLayout>
+        <h1></h1>
+      </AppLayout>
     </>
   );
 };

@@ -18,5 +18,14 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  async redirects() {
+    return [
+      {
+        source: "/app",
+        destination: "/app/qr", // Matched parameters can be used in the destination
+        permanent: true,
+      },
+    ];
+  },
 };
 export default config;
