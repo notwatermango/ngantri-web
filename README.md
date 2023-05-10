@@ -105,7 +105,7 @@
   <img src="https://cdn.discordapp.com/attachments/874108293218455565/1105681236057407568/image.png"/>
 </p>
 
-14. Name: branch name, Write description, Reviewers: yang mau disuruh baca code (minimal notwatermango), Assignees: yang bikin code
+14. Name: branch name, Write description, Reviewers: (minimal notwatermango), Assignees: you
 
 <p align="center">
   <img src="https://cdn.discordapp.com/attachments/874108293218455565/1105682101761740891/image.png"/>
