@@ -12,17 +12,68 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Account {
-    id       String @id @default(cuid())
-    email    String @unique
-    password String
-    role     Int
-    // TODO: migrate to postgre
-    // role     Role   @default(ADMIN)
-}
-
 // TODO: migrate to postgre
 // enum Role {
 //     USER
-//     ADMIN
+//     MERCHANT
 // }
+
+model Account {
+    id       String    @id @default(cuid())
+    email    String    @unique
+    password String
+    role     Int // 1 user, 2 merchant
+    // TODO: migrate to postgre
+    // role     Role 
+    // 
+    user     User?
+    merchant Merchant?
+
+    @@unique([id, email])
+}
+
+model User {
+    id       String  @id @default(cuid())
+    name     String
+    phone    String
+    address  String
+    imageUrl String?
+
+    account   Account @relation(fields: [accountId, email], references: [id, email])
+    accountId String  @unique
+    email     String
+
+    tickets Ticket[]
+
+    @@unique([accountId, email])
+}
+
+model Merchant {
+    id       String  @id @default(cuid())
+    name     String
+    phone    String
+    address  String
+    imageUrl String?
+    isOpen   Boolean @default(false)
+
+    account   Account @relation(fields: [accountId, email], references: [id, email])
+    accountId String  @unique
+    email     String
+
+    tickets Ticket[]
+
+    @@unique([accountId, email])
+}
+
+model Ticket {
+    id         String   @id @default(cuid())
+    display    String
+    createdAt  DateTime @default(now())
+    resolvedAt DateTime?
+    status     Int // 1 open, 2 completed, 3 cancelled
+
+    user       User?     @relation(fields: [userId], references: [id])
+    userId     String?
+    merchant   Merchant? @relation(fields: [merchantId], references: [id])
+    merchantId String?
+}
