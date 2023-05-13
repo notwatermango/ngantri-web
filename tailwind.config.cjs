@@ -4,6 +4,7 @@ const config = {
   theme: {
     extend: {
       colors: {
+        'ultramarine' : '#3566FF'
       }
     },
   },
