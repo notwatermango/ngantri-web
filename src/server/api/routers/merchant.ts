@@ -2,10 +2,7 @@ import type { Merchant } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
-import {
-  createTRPCRouter,
-  protectedProcedure,
-} from "~/server/api/trpc";
+import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 
 export const merchantRouter = createTRPCRouter({
   getMerchantInfoOnTicketConfirmation: protectedProcedure
