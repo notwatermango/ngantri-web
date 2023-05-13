@@ -42,6 +42,10 @@ const config = {
       },
     ],
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    // disable <Image /> warning
+    "@next/next/no-img-element": "off",
+    // disable exhaustive useEffect dependency
+    "react-hooks/exhaustive-deps": "off",
   },
   ignorePatterns: [".next/*", "src/utils/Html5QrcodePlugin.jsx"],
 };
