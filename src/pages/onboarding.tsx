@@ -14,7 +14,7 @@ const OnBoardingPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-ultramarine">
-        <div className="flex flex-col items-center gap-y-5 p-5"> 
+        <div className="flex flex-col items-center gap-y-5 p-5">
           <img
             className="h-10 w-auto rounded"
             src="https://i.ibb.co/rHScgKG/logo-pjg-lgt.png"
@@ -39,17 +39,18 @@ const OnBoardingPage: NextPage = () => {
             </p>
           )}
           <button
-            className="rounded-full bg-dark-blue h-10 w-80 text-white font-bold no-underline transition hover:bg-ultramarine-min hover:text-white "
+            className="h-10 w-80 rounded-full bg-dark-blue font-bold text-white no-underline transition hover:bg-ultramarine-min hover:text-white "
             onClick={
               sessionData
                 ? () => void signOut()
-                : () => void signIn(undefined, { callbackUrl: "/auth/redirect" })
+                : () =>
+                    void signIn(undefined, { callbackUrl: "/auth/redirect" })
             }
           >
             {sessionData ? "SIGN OUT" : "SIGN IN"}
           </button>
           <Link href={sessionData ? "/auth/redirect" : "/signup"}>
-            <button className="rounded-full h-10 w-80 bg-white text-dark-blue font-bold no-underline transition hover:bg-ultramarine-min hover:text-white">
+            <button className="h-10 w-80 rounded-full bg-white font-bold text-dark-blue no-underline transition hover:bg-ultramarine-min hover:text-white">
               {sessionData ? "CONTINUE" : "SIGN UP"}
             </button>
           </Link>
