@@ -9,6 +9,9 @@ export const accountRouter = createTRPCRouter({
       z.object({
         email: z.string(),
         password: z.string(),
+        name: z.string(),
+        phone: z.string(),
+        address: z.string(),
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -18,6 +21,13 @@ export const accountRouter = createTRPCRouter({
             email: input.email,
             password: input.password,
             role: 1,
+            user: {
+              create: {
+                name: input.name,
+                phone: input.phone,
+                address: input.address,
+              },
+            },
           },
         });
         return {
@@ -45,6 +55,9 @@ export const accountRouter = createTRPCRouter({
       z.object({
         email: z.string(),
         password: z.string(),
+        name: z.string(),
+        phone: z.string(),
+        address: z.string(),
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -54,6 +67,13 @@ export const accountRouter = createTRPCRouter({
             email: input.email,
             password: input.password,
             role: 2,
+            merchant: {
+              create: {
+                name: input.name,
+                address: input.address,
+                phone: input.phone,
+              },
+            },
           },
         });
         return {
