@@ -46,29 +46,27 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className="flex flex-col items-center gap-y-5 p-5">
+          <img
+            className="h-auto w-20 rounded"
+            src="https://i.ibb.co/DKjkNkp/logo-kcl-dark.png"
+            alt="logo kecil dark"
+          />
+          <img
+            className="h-10 w-auto rounded"
+            src="https://i.ibb.co/YyCd68t/logo-pjg-dark.png"
+            alt="logo pjg dark"
+          />
 
-        <img
-          className="h-auto w-20 rounded"
-          src="https://i.ibb.co/DKjkNkp/logo-kcl-dark.png"
-          alt="logo kecil dark"
-        />
-        <img
-          className="h-10 w-auto rounded"
-          src="https://i.ibb.co/YyCd68t/logo-pjg-dark.png"
-          alt="logo pjg dark"
-        />
+          <p className="w-48 text-center font-semibold text-dark-blue ">
+            Reserve your seat wherever and whenever
+          </p>
 
-        <p className="w-48 text-center font-semibold text-dark-blue ">
-          Reserve your seat wherever and whenever
-        </p>
-
-        <Link href="/onboarding">
-          <button className="rounded-full bg-gradient-to-r from-ultramarine-min to-ultramarine-max px-7 py-3 text-xl font-bold text-dark-blue no-underline transition hover:text-white">
-            Get Started
-          </button>
-        </Link>
+          <Link href="/onboarding">
+            <button className="rounded-full bg-gradient-to-r from-ultramarine-min to-ultramarine-max px-7 py-3 text-xl font-bold text-dark-blue no-underline transition hover:text-white">
+              Get Started
+            </button>
+          </Link>
         </div>
-
       </main>
     </>
   );
