@@ -46,6 +46,8 @@ const config = {
     "@next/next/no-img-element": "off",
     // disable exhaustive useEffect dependency
     "react-hooks/exhaustive-deps": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "off",
   },
   ignorePatterns: [".next/*", "src/utils/Html5QrcodePlugin.jsx"],
 };
