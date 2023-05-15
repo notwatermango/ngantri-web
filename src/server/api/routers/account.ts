@@ -1,7 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
 
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
 
 export const accountRouter = createTRPCRouter({
   createUserAccount: publicProcedure
@@ -95,4 +95,46 @@ export const accountRouter = createTRPCRouter({
         };
       }
     }),
+
+  getMerchantId: protectedProcedure
+    .input(
+      z.object({
+        accountId: z.string()
+      })
+    )
+    .query(async ({ ctx, input: { accountId } }) => {
+      return await ctx.prisma.account.findUnique({
+        where: {
+          id: accountId
+        },
+        select: {
+          merchant: {
+            select: {
+              id: true,
+            }
+          }
+        }
+      });
+    }),
+
+  getUserId: protectedProcedure
+    .input(
+      z.object({
+        accountId: z.string()
+      })
+    )
+    .query(async ({ ctx, input: { accountId } }) => {
+      return await ctx.prisma.account.findUnique({
+        where: {
+          id: accountId
+        },
+        select: {
+          user: {
+            select: {
+              id: true,
+            }
+          }
+        }
+      });
+    })
 });

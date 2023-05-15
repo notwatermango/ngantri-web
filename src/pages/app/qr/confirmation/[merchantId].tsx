@@ -1,6 +1,7 @@
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 import AppLayout from "~/components/app/AppLayout";
 import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
@@ -12,12 +13,33 @@ import { api } from "~/utils/api";
 
 const ConfirmationPage: AuthNextPage = () => {
   const router = useRouter();
+  const { data: sessionData } = useSession();
   const [message, setMessage] = useState("");
   const merchantId = router.query.merchantId as string;
   const { data: merchant } =
     api.merchant.getMerchantInfoOnTicketConfirmation.useQuery({
       merchantId,
     });
+  const { data: account } = api.account.getUserId.useQuery({
+    accountId: sessionData ? sessionData.user.id : "",
+  });
+  const createTicket = api.ticket.createTicket.useMutation();
+  const handleCreateTicket = async (e: FormEvent) => {
+    e.preventDefault();
+    await createTicket.mutateAsync(
+      {
+        userId: account?.user ? account.user.id : "",
+        merchantId,
+        message,
+      },
+      {
+        onSuccess: async () => {
+          await router.push("/app/history");
+        },
+      }
+    );
+  };
+
   return (
     <>
       <Head>
@@ -46,7 +68,7 @@ const ConfirmationPage: AuthNextPage = () => {
             onChange={(e) => setMessage(e.target.value)}
           />
         </form>
-        <button>continue</button>
+        <button onClick={handleCreateTicket}>Create Ticket</button>
       </AppLayout>
     </>
   );

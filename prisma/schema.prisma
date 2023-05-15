@@ -66,14 +66,15 @@ model Merchant {
 }
 
 model Ticket {
-    id         String   @id @default(cuid())
+    id         String    @id @default(cuid())
     display    String
-    createdAt  DateTime @default(now())
+    createdAt  DateTime  @default(now())
     resolvedAt DateTime?
-    status     Int // 1 open, 2 completed, 3 cancelled
+    status     Int       @default(1) // 1 open, 2 completed, 3 cancelled
+    message    String
 
     user       User?     @relation(fields: [userId], references: [id])
-    userId     String?
+    userId     String
     merchant   Merchant? @relation(fields: [merchantId], references: [id])
-    merchantId String?
+    merchantId String
 }
