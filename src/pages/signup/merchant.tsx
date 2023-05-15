@@ -49,40 +49,54 @@ const MerchantSignup: NextPage = () => {
         <meta name="description" content="Sign up merchant" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1>Sign Up</h1>
+      <main className="flex min-h-screen flex-col items-center justify-center bg-ultramarine">
+        <h1 className="text-center font-bold text-white">Reserve your seat</h1>
+        <h1 className="mb-4 text-center font-bold text-white">
+          wherever and whenever
+        </h1>
         {errorMessage && <p>{errorMessage}</p>}
         <form className="flex flex-col">
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="font-bold text-white">
+              Email
+            </label>
             <input
               name="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="mt-2 block w-64 rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className="font-bold text-white">
+              Password
+            </label>
             <input
               name="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="mt-2 block w-64 rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
           <div>
-            <label htmlFor="name">Store Name</label>
+            <label htmlFor="name" className="font-bold text-white">
+              Store Name
+            </label>
             <input
               name="name"
               type="text"
               placeholder="Borger Kingus Paskal 34"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              className="mt-2 block w-64 rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
           <div>
-            <label htmlFor="phone">Phone</label>
+            <label htmlFor="phone" className="font-bold text-white">
+              Phone
+            </label>
             <input
               name="phone"
               type="text"
@@ -90,20 +104,27 @@ const MerchantSignup: NextPage = () => {
               placeholder="08535102030"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              className="mt-2 block w-64 rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
           <div>
-            <label htmlFor="address">Address</label>
+            <label htmlFor="address" className="font-bold text-white">
+              Address
+            </label>
             <input
               name="address"
               type="text"
               placeholder="Paskal lt. 5"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+              className="mt-2 block w-64 rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
-          <button onClick={(e) => void handleCreateAccount(e)}>
-            Create account
+          <button
+            onClick={(e) => void handleCreateAccount(e)}
+            className="mb-2 mt-5 place-content-center rounded-3xl border border-gray-300 bg-white px-5 py-2 text-sm font-bold text-dark-blue hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200"
+          >
+            SIGN UP
           </button>
         </form>
       </main>
