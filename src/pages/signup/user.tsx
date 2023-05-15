@@ -70,7 +70,7 @@ const UserSignup: NextPage = () => {
           </div>
           <div>
             <label htmlFor="password" className="font-bold text-white">
-              PASSWORD :
+              Password
             </label>
             <input
               name="password"
