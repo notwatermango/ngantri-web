@@ -58,7 +58,7 @@ const UserSignup: NextPage = () => {
         <form className="flex flex-col">
           <div>
             <label htmlFor="email" className="font-bold text-white">
-              EMAIL :{" "}
+              Email
             </label>
             <input
               name="email"
