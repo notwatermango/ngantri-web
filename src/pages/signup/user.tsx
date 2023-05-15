@@ -82,7 +82,7 @@ const UserSignup: NextPage = () => {
           </div>
           <div>
             <label htmlFor="name" className="font-bold text-white">
-              NAME :
+              Name
             </label>
             <input
               name="name"
