@@ -95,7 +95,7 @@ const UserSignup: NextPage = () => {
           </div>
           <div>
             <label htmlFor="phone" className="font-bold text-white">
-              PHONE :{" "}
+              Phone
             </label>
             <input
               name="phone"
