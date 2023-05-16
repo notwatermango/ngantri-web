@@ -15,7 +15,8 @@ const AppBottomNavigation = () => {
               type="button"
             >
             <img
-              src="https://i.ibb.co/hMcMLfk/profile.png"
+              className="w-10"
+              src="https://i.postimg.cc/F77vvF4v/profile1.png"
               alt="Profile"
             />
             </button>
@@ -28,7 +29,8 @@ const AppBottomNavigation = () => {
               type="button"
             >
               <img
-                src="https://i.ibb.co/88gPcWK/scan.png"
+                className="w-10"
+                src="https://i.postimg.cc/XXN32c1p/scan.png"
                 alt="Scan"
               />
             </button>
@@ -42,7 +44,8 @@ const AppBottomNavigation = () => {
               className="inline-flex flex-col items-center justify-center px-5"
             >
               <img
-                src="https://i.ibb.co/w6L7dpC/history.png"
+                className="w-10"
+                src="https://i.postimg.cc/py0v3h3k/history1.png"
                 alt="History"
               />
             </button>
