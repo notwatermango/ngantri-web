@@ -8,9 +8,9 @@ export default function SignIn({
   csrfToken,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-ultramarine  gap-y-5 p-5">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-y-5  bg-ultramarine p-5">
       <form method="post" action="/api/auth/callback/credentials">
-        <div className="flex flex-col items-center justify-center   gap-y-5 p-5">
+        <div className="flex flex-col items-center justify-center gap-y-5 p-5">
           <img
             className="h-10 w-auto rounded"
             src="https://i.postimg.cc/jLkDY68S/logo-pjg-lgt.png"
@@ -24,32 +24,37 @@ export default function SignIn({
             src="https://i.postimg.cc/JsDGrygc/logo-kcl-lgt.png"
             alt="logo kcl light"
           />
-        </div>                 
+        </div>
         <div className="flex flex-col items-center gap-y-3 p-10 ">
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <label className="font-semibold text-white">
             EMAIL
-            <input className="bg-white w-80 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            <input
+              className="block w-80 rounded-lg border border-gray-300 bg-white p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               placeholder="example@gmail.com"
-              name="email" 
-              type="email" 
-              required/>
+              name="email"
+              type="email"
+              required
+            />
           </label>
           <label className="font-semibold text-white">
             PASSWORD
-            <input 
-              className="bg-white w-80 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              name="password" 
-              type="password" 
-              required/>
+            <input
+              className="block w-80 rounded-lg border border-gray-300 bg-white p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              name="password"
+              type="password"
+              required
+            />
           </label>
         </div>
         <div className="flex items-center justify-center">
-          <button className="h-10 w-80 rounded-full bg-dark-blue text-white font-bold  no-underline transition hover:bg-ultramarine-min hover:text-white"
-          type="submit">
+          <button
+            className="h-10 w-80 rounded-full bg-dark-blue font-bold text-white  no-underline transition hover:bg-ultramarine-min hover:text-white"
+            type="submit"
+          >
             SIGN IN
           </button>
-        </div>     
+        </div>
       </form>
     </main>
   );
