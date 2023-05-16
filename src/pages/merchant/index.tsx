@@ -1,13 +1,15 @@
-import { useSession } from "next-auth/react";
 import Head from "next/head";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import MerchantLayout from "~/components/merchant/MerchantLayout";
 import type { AuthNextPage } from "~/types/pages";
-import { api } from "~/utils/api";
 
 const MerchantHome: AuthNextPage = () => {
-  const { data: sessionData } = useSession();
-  const { data: account } = api.account.getMerchantId.useQuery({
-    accountId: sessionData ? sessionData.user.id : "",
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/merchant/dashboard");
   });
+
   return (
     <>
       <Head>
@@ -15,10 +17,9 @@ const MerchantHome: AuthNextPage = () => {
         <meta name="description" content="Merchant home" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1>Merchant App</h1>
-        <p>{account?.merchant?.id}</p>
-      </main>
+      <MerchantLayout>
+        <h1></h1>
+      </MerchantLayout>
     </>
   );
 };
