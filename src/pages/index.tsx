@@ -23,7 +23,7 @@ const Home: NextPage = () => {
               <div className="basis-1/2 place-self-center">
                 <img
                   className="mx-auto w-auto rounded"
-                  src="https://i.ibb.co/55WS7HG/lp1.png"
+                  src="https://i.postimg.cc/872sjpg8/lp1.png"
                   alt="Gambar Landing page 1"
                 />
               </div>
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
               <div className="basis-1/2 ">
                 <img
                   className="mx-auto w-auto rounded"
-                  src="https://i.ibb.co/M86ZsQN/lp2.png"
+                  src="https://i.postimg.cc/Ff0zSMhY/lp2.png"
                   alt="Gambar Landing page 2"
                 />
               </div>
@@ -48,12 +48,12 @@ const Home: NextPage = () => {
         <div className="flex flex-col items-center gap-y-5 p-5">
           <img
             className="h-auto w-20 rounded"
-            src="https://i.ibb.co/DKjkNkp/logo-kcl-dark.png"
+            src="https://i.postimg.cc/hhczLtzc/logo-kcl-dark.png"
             alt="logo kecil dark"
           />
           <img
             className="h-10 w-auto rounded"
-            src="https://i.ibb.co/YyCd68t/logo-pjg-dark.png"
+            src="https://i.postimg.cc/V0fJmKQd/logo-pjg-dark.png"
             alt="logo pjg dark"
           />
 
