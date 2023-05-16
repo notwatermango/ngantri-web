@@ -11,7 +11,7 @@ import { ticketRouter } from "./routers/ticket";
 export const appRouter = createTRPCRouter({
   account: accountRouter,
   merchant: merchantRouter,
-  ticket: ticketRouter
+  ticket: ticketRouter,
 });
 
 // export type definition of API
