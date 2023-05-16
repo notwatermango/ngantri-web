@@ -13,7 +13,7 @@ export default function SignIn({
         <div className="flex flex-col items-center justify-center   gap-y-5 p-5">
           <img
             className="h-10 w-auto rounded"
-            src="https://i.ibb.co/rHScgKG/logo-pjg-lgt.png"
+            src="https://i.postimg.cc/jLkDY68S/logo-pjg-lgt.png"
             alt="logo pjg light"
           />
           <p className="w-48 text-center font-semibold text-white ">
@@ -21,8 +21,8 @@ export default function SignIn({
           </p>
           <img
             className="h-24 w-auto rounded"
-            src="https://i.ibb.co/rknCvm4/logo-kcl-lgt.png"
-            alt="logo pjg light"
+            src="https://i.postimg.cc/JsDGrygc/logo-kcl-lgt.png"
+            alt="logo kcl light"
           />
         </div>                 
         <div className="flex flex-col items-center gap-y-3 p-10 ">
