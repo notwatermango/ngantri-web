@@ -32,24 +32,41 @@ const QRPage: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppLayout>
-        <h1>Scan QR</h1>
-        {errorMessage && <div className="text-rose-800">{errorMessage}</div>}
-        <div>Silakan klik kamera di bawah untuk membuka kamera</div>
-        <div className="flex h-[60vh] w-full flex-col items-center justify-center">
-          {showQrScanner && (
-            <Html5QrcodePlugin
-              fps={10}
-              qrbox={300}
-              disableFlip={false}
-              qrCodeSuccessCallback={onNewScanResult}
-              className="max-h-full max-w-full"
-            />
-          )}
-        </div>
+        <div className="flex min-h-screen flex-col items-center justify-center bg-ultramarine gap-y-5">
+          <img
+            className="h-10 w-auto rounded"
+            src="https://i.postimg.cc/jLkDY68S/logo-pjg-lgt.png"
+            alt="logo pjg light"
+          />
+          <p className="w-60 text-center font-semibold text-white">
+            Silakan klik tombol kamera di bawah untuk membuka kamera</p>
 
-        <button onClick={() => setShowQrScanner(!showQrScanner)}>
-          Button logo kamera
-        </button>
+            <div className="flex container flex-col w-72 pb-5 bg-white items-center justify-center rounded-lg">
+              <div>
+                {errorMessage && <div className="text-rose-800">{errorMessage}</div>}
+                {/* <div>Silakan klik kamera di bawah untuk membuka kamera</div> */}
+                <div className="flex h-[30vh] w-full flex-col items-center justify-center">
+                  {showQrScanner && (
+                    <Html5QrcodePlugin
+                      fps={10}
+                      qrbox={300}
+                      disableFlip={false}
+                      qrCodeSuccessCallback={onNewScanResult}
+                      className="max-h-full max-w-full"
+                    />
+                  )}
+                </div>
+              </div>        
+              <button 
+                className="inline-flex flex-col items-center justify-center px-5"
+                onClick={() => setShowQrScanner(!showQrScanner)}>
+                <img 
+                className="h-14"
+                src="https://i.postimg.cc/D4zT8n4q/camera-1.png"
+                />
+              </button>
+            </div>
+          </div>    
       </AppLayout>
     </>
   );
