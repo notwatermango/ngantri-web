@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Link from "next/link";
 import AppLayout from "~/components/app/AppLayout";
 import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
@@ -23,9 +24,26 @@ const HistoryPage: AuthNextPage = () => {
       <AppLayout>
         <h1>History</h1>
         <div>list nya</div>
-        {user?.tickets.map((ticket) => {
-          return <div key={ticket.id}>{ticket.merchant?.name}</div>;
-        })}
+        <ul className="flex max-h-full flex-col overflow-auto">
+          {user?.tickets.map((ticket) => {
+            // style ticket item here
+            return (
+              <li key={ticket.id} className="flex flex-col hover:bg-red-950">
+                <Link href={"/app/history/details/" + ticket.id}>
+                  <div>{ticket.merchant?.name}</div>
+                  <div>{ticket.createdAt.toString()}</div>
+                  <div>
+                    {ticket.status == 1
+                      ? "In Queue"
+                      : ticket.status == 2
+                      ? "Finished"
+                      : "Cancelled"}
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </AppLayout>
     </>
   );
