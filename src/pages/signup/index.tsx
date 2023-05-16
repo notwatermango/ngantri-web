@@ -34,7 +34,7 @@ const SignUpPage: NextPage = () => {
           </Link>
           <Link href="/signup/merchant">
             <button className="h-10 w-80 rounded-full text-dark-blue font-bold bg-white no-underline transition hover:bg-ultramarine-min hover:text-white ">
-              AS ADMIN
+              AS MERCHANT
             </button>
           </Link>
         </div>
