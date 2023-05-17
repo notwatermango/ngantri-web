@@ -9,25 +9,21 @@ const AppBottomNavigation = () => {
         <div className="mx-auto grid h-full max-w-xs grid-cols-3 ">
           <Link
             href="/app/profile"
-            className="inline-flex items-center justify-center hover:bg-gradient-to-br from-ultramarine-min to-white rounded"
+            className="inline-flex items-center justify-center rounded from-ultramarine-min to-white hover:bg-gradient-to-br"
           >
-            <button
-              type="button"
-            >
-            <img
-              className="w-10"
-              src="https://i.postimg.cc/F77vvF4v/profile1.png"
-              alt="Profile"
-            />
+            <button type="button">
+              <img
+                className="w-10"
+                src="https://i.postimg.cc/F77vvF4v/profile1.png"
+                alt="Profile"
+              />
             </button>
           </Link>
           <Link
             href="/app/qr"
-            className="inline-flex items-center justify-center hover:bg-gradient-to-br from-ultramarine-min to-white rounded"
+            className="inline-flex items-center justify-center rounded from-ultramarine-min to-white hover:bg-gradient-to-br"
           >
-            <button
-              type="button"
-            >
+            <button type="button">
               <img
                 className="w-10"
                 src="https://i.postimg.cc/XXN32c1p/scan.png"
@@ -37,8 +33,8 @@ const AppBottomNavigation = () => {
           </Link>
           <Link
             href="/app/history"
-            className="inline-flex items-center justify-center hover:bg-gradient-to-br from-ultramarine-min to-white rounded"
-            >
+            className="inline-flex items-center justify-center rounded from-ultramarine-min to-white hover:bg-gradient-to-br"
+          >
             <button
               type="button"
               className="inline-flex flex-col items-center justify-center px-5"

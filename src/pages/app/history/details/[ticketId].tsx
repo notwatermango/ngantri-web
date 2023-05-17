@@ -20,13 +20,13 @@ const TicketDetailsPage: AuthNextPage = () => {
             />
           </div>
           <h6 className="mt-2 text-center text-sm text-white">
-            Here's your ticket number
+            {"Here's your ticket number"}
           </h6>
           <div className="my-8 flex h-1/4 w-full max-w-lg resize-none items-center justify-center rounded-lg border border-white bg-white p-2.5 text-5xl font-bold text-ultramarine">
             A 020
           </div>
           <h6 className="text-center text-sm text-white">
-            We'll notify you when we re almost
+            {"We'll notify you when we re almost"}
             <p className="break-words">ready to see you</p>
           </h6>
           <div className="row-span-3 mt-8 flex w-full max-w-lg justify-between">
