@@ -11,18 +11,18 @@ const TicketDetailsPage: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppLayout>
-        <div className="flex h-full w-full flex-col items-center bg-ultramarine px-16">
-          <div className="mt-5 flex flex-col items-center p-5">
+        <div className="flex h-full w-full flex-col flex-col items-center justify-between bg-ultramarine p-16">
+          <div className="flex flex-col items-center p-5">
             <img
               className="h-8 w-auto rounded"
               src="https://i.ibb.co/hKQPjS6/Group-35-1.png"
               alt="long-logo"
             />
           </div>
-          <h6 className="mt-2 text-center text-sm text-white">
+          <h6 className="text-center text-sm text-white">
             {"Here's your ticket number"}
           </h6>
-          <div className="my-8 flex h-1/4 w-full max-w-lg resize-none items-center justify-center rounded-lg border border-white bg-white p-2.5 text-5xl font-bold text-ultramarine">
+          <div className="flex h-1/4 w-full max-w-lg resize-none items-center justify-center rounded-lg border border-white bg-white p-2.5 text-5xl font-bold text-ultramarine">
             A 020
           </div>
           <h6 className="text-center text-sm text-white">
