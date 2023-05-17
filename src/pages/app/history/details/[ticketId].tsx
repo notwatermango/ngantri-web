@@ -29,7 +29,7 @@ const TicketDetailsPage: AuthNextPage = () => {
             {"We'll notify you when we re almost"}
             <p className="break-words">ready to see you</p>
           </h6>
-          <div className="row-span-3 mt-8 flex w-full max-w-lg justify-between">
+          <div className="row-span-3 flex w-full max-w-lg justify-between">
             <div className="w-auto text-center">
               <h4 className="text-3xl font-bold text-white">9</h4>
               <h6 className="text-xs text-white">In store</h6>
@@ -45,7 +45,7 @@ const TicketDetailsPage: AuthNextPage = () => {
               <h6 className="text-xs text-white">Est time</h6>
             </div>
           </div>
-          <div className="row-span-2 mt-8 flex w-full max-w-lg justify-between">
+          <div className="row-span-2 flex w-full max-w-lg justify-between">
             <div className="w-auto text-center">
               <button className="text-start text-sm font-bold text-white underline">
                 CANCEL TICKET
