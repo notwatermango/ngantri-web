@@ -22,7 +22,7 @@ const HistoryPage: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppLayout>
-        <div className="flex h-full w-full flex-col bg-ultramarine px-24 md:p-8">
+        <div className="flex h-full w-full flex-col bg-ultramarine px-8">
           <div>
             <div className="mt-5 flex flex-col items-center p-5">
               <img
@@ -32,7 +32,7 @@ const HistoryPage: AuthNextPage = () => {
               />
             </div>
           </div>
-          <ul className="max-h-full flex-col space-y-3 overflow-x-hidden">
+          <ul className="max-h-full flex-col space-y-3 overflow-x-hidden py-4">
             {user?.tickets.map((ticket) => {
               // style ticket item here
               return (
@@ -52,12 +52,12 @@ const HistoryPage: AuthNextPage = () => {
                     </Link>
                   </div>
                   <div className="my-1 ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs tracking-wider text-white">
-                    <span className="font-bold">Status :</span>
+                    <span className="font-bold">{"Status : "}</span>
                     {ticket.status == 1
-                      ? " In Queue"
+                      ? "In Queue"
                       : ticket.status == 2
-                      ? " Finished"
-                      : " Cancelled"}
+                      ? "Finished"
+                      : "Cancelled"}
                   </div>
                 </li>
               );
