@@ -22,7 +22,7 @@ const HistoryPage: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppLayout>
-        <div className="flex h-full w-full flex-col bg-ultramarine px-24 md:p-8">
+        <div className="flex h-full w-full flex-col bg-ultramarine px-16 md:p-8">
           <div>
             <div className="mt-5 flex flex-col items-center p-5">
               <img
@@ -38,26 +38,34 @@ const HistoryPage: AuthNextPage = () => {
               return (
                 <li
                   key={ticket.id}
-                  className="my-1 w-full resize-none rounded-lg border border-white bg-white p-1 text-sm text-black"
+                  className="w-full resize-none rounded-lg border border-white bg-white p-1 text-sm text-black"
                 >
-                  <div className="align-text-start row-span-2 flex items-stretch">
-                    <div className="text-l block w-full bg-white p-0.5 text-left font-extrabold tracking-wide text-black">
+                  <div className=" row-span-2 flex items-stretch">
+                    <div className="text-l block w-full bg-white px-0.5 text-left font-extrabold tracking-wide text-black">
                       {ticket.merchant?.name}
                     </div>
                     <Link
-                      className="text-l block w-full bg-white p-0.5 text-right font-bold tracking-wide text-ultramarine"
+                      className="text-l block w-full bg-white px-0.5 text-right font-bold tracking-wide text-ultramarine"
                       href={"/app/history/details/" + ticket.id}
                     >
                       more detail
                     </Link>
                   </div>
-                  <div className="my-1 ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs tracking-wider text-white">
-                    <span className="font-bold">Status :</span>
-                    {ticket.status == 1
-                      ? " In Queue"
-                      : ticket.status == 2
-                      ? " Finished"
-                      : " Cancelled"}
+                  <div className="ml-0.5 h-auto w-fit px-0.5 pb-1 text-left text-xs tracking-wider text-black">
+                    buat 3 org
+                  </div>
+                  <div className="row-span-2 flex flex-row items-stretch justify-between">
+                    <div className="ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs tracking-wider text-white">
+                      <span className="font-bold">Status :</span>
+                      {ticket.status == 1
+                        ? " In Queue"
+                        : ticket.status == 2
+                        ? " Finished"
+                        : " Cancelled"}
+                    </div>
+                    <div className="ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs font-bold tracking-wider text-white">
+                      A020
+                    </div>
                   </div>
                 </li>
               );
