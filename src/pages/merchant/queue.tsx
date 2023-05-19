@@ -18,7 +18,7 @@ const MerchantQueue: AuthNextPage = () => {
           <h2 className="mt-10 text-center text-2xl font-bold text-white">
             Total Queue: 8
           </h2>
-          <ul className="flex max-h-full w-full flex-col items-center overflow-scroll py-1">
+          <ul className="flex max-h-full w-full flex-col items-center overflow-scroll overflow-x-hidden py-1">
             {/* Item start */}
             <li className="mt-5 flex h-1/6 w-4/5 items-center rounded-2xl bg-white pb-10 pt-10">
               <div className="flex items-center">
