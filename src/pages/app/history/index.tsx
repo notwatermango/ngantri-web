@@ -14,6 +14,7 @@ const HistoryPage: AuthNextPage = () => {
   const { data: user } = api.user.getUserWithTicketList.useQuery({
     userId: account?.user ? account.user.id : "",
   });
+
   return (
     <>
       <Head>
@@ -23,7 +24,6 @@ const HistoryPage: AuthNextPage = () => {
       </Head>
       <AppLayout>
         <h1>History</h1>
-        <div>list nya</div>
         <ul className="flex max-h-full flex-col overflow-auto">
           {user?.tickets.map((ticket) => {
             // style ticket item here

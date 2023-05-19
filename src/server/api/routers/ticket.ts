@@ -45,4 +45,58 @@ export const ticketRouter = createTRPCRouter({
         });
       }
     }),
+  seeTicketDetail: protectedProcedure
+    .input(
+      z.object({
+        ticketId: z.string(),
+      })
+    )
+    .query(async ({ input: { ticketId }, ctx }) => {
+      const ticket = await ctx.prisma.ticket.findUnique({
+        where: {
+          id: ticketId,
+        },
+      });
+      const merchantId = ticket?.merchantId;
+      const ticketDisplay = ticket?.display;
+      const createdAt = ticket?.createdAt;
+      const peopleAhead = await ctx.prisma.ticket.count({
+        where: {
+          merchantId,
+          status: 1,
+          display: {
+            not: { equals: ticketDisplay },
+          },
+          createdAt: { lt: createdAt },
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+
+      try {
+        return { peopleAhead: peopleAhead, ticketDisplay: ticketDisplay };
+      } catch (e) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: `Ticket Detail`,
+        });
+      }
+    }),
+  cancelTicket: protectedProcedure
+    .input(
+      z.object({
+        ticketId: z.string(),
+      })
+    )
+    .mutation(async ({ input: { ticketId }, ctx }) => {
+      await ctx.prisma.ticket.update({
+        where: {
+          id: ticketId,
+        },
+        data: {
+          status: 3,
+        },
+      });
+    }),
 });
