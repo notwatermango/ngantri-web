@@ -1,8 +1,10 @@
 import Head from "next/head";
+import { useState } from "react";
 import MerchantLayout from "~/components/merchant/MerchantLayout";
 import type { AuthNextPage } from "~/types/pages";
 
 const MerchantDashboard: AuthNextPage = () => {
+  const [isStoreOpen, setIsStoreOpen] = useState(true);
   return (
     <>
       <Head>
@@ -11,41 +13,47 @@ const MerchantDashboard: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MerchantLayout>
-        <div className="flex h-full w-full flex-col justify-center bg-ultramarine px-5 md:p-8">
-          <div className="flex flex-col items-center p-5">
+        <div className="flex h-full w-full flex-col items-center justify-center gap-y-5 overflow-y-auto bg-ultramarine px-5 md:p-8">
+          <div className="flex flex-col items-center pt-5">
             <img
               className="h-10 w-auto rounded"
               src="https://i.ibb.co/hKQPjS6/Group-35-1.png"
               alt="long-logo"
             />
           </div>
-          <div className="mt-5 flex flex-col items-center">
-            <h5 className="text-lg font-bold text-white">WELCOME,</h5>
-            <h6 className="text-md text-white">New Store - Paskal 23</h6>
-          </div>
-          <div className="mt-5 flex justify-between">
+          <div className="flex w-full justify-between">
             <div className="flex flex-col justify-between">
-              <h5 className="text-lg font-bold text-white">WELCOME,</h5>
-              <h6 className="text-md text-white">New Store - Paskal 23</h6>
+              <div className="text-lg font-bold text-white md:text-xl">
+                WELCOME,
+              </div>
+              <div className="text-md text-white md:text-lg">
+                New Store - Paskal 23
+              </div>
             </div>
-            <div>
-              <button className="text-md block h-full rounded-lg bg-green-500 p-1 font-bold text-white">
+            {isStoreOpen ? (
+              <div className="text-md flex h-full items-center rounded-lg bg-green-500 px-2 font-bold text-white">
                 OPEN
-              </button>
-            </div>
+              </div>
+            ) : (
+              <div className="text-md flex h-full items-center rounded-lg bg-red-500 px-2 font-bold text-white">
+                CLOSED
+              </div>
+            )}
           </div>
-          <div className="mb-5 mt-10 flex w-full resize-none items-center justify-between rounded-lg border border-white bg-white">
-            <div className="m-5 text-lg font-bold text-black">IN QUEUE</div>
-            <div className="mx-5 text-4xl font-bold text-black">14</div>
-          </div>
-          <div className="flex justify-between">
-            <div className="w-5/12 resize-none flex-col items-center justify-between rounded-lg border border-white bg-white p-5">
-              <div className="text-lg font-bold text-black">FINISH</div>
-              <div className="mt-5 text-4xl font-bold text-black">14</div>
+          <div className="flex w-full flex-col gap-y-5">
+            <div className="flex w-full resize-none items-center justify-between rounded-lg border border-white bg-white p-5">
+              <div className="text-lg font-bold text-black">IN QUEUE</div>
+              <div className="text-4xl font-bold text-black">14</div>
             </div>
-            <div className="w-5/12 resize-none flex-col items-center justify-between rounded-lg border border-white bg-white p-5">
-              <div className="text-lg font-bold text-black">CANCELED</div>
-              <div className="mt-5 text-4xl font-bold text-black">14</div>
+            <div className="grid grid-cols-2 gap-5">
+              <div className="flex-col items-center justify-between gap-3 rounded-lg border border-white bg-white p-5">
+                <div className="text-md font-bold text-black">FINISHED</div>
+                <div className="text-4xl font-bold text-black">999</div>
+              </div>
+              <div className="flex-col items-center justify-between gap-3 rounded-lg border border-white bg-white p-5">
+                <div className="text-md font-bold text-black">CANCELLED</div>
+                <div className="text-4xl font-bold text-black">14</div>
+              </div>
             </div>
           </div>
         </div>
