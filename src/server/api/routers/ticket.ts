@@ -69,9 +69,6 @@ export const ticketRouter = createTRPCRouter({
           },
           createdAt: { lt: createdAt },
         },
-        orderBy: {
-          createdAt: "desc",
-        },
       });
 
       try {
