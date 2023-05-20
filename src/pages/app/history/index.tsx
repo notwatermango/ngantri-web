@@ -14,6 +14,7 @@ const HistoryPage: AuthNextPage = () => {
   const { data: user } = api.user.getUserWithTicketList.useQuery({
     userId: account?.user ? account.user.id : "",
   });
+
   return (
     <>
       <Head>
@@ -52,7 +53,7 @@ const HistoryPage: AuthNextPage = () => {
                     </Link>
                   </div>
                   <div className="ml-0.5 h-auto w-fit px-0.5 pb-1 text-left text-xs tracking-wider text-black">
-                    buat 3 org
+                    {/* {ticket.message} */}
                   </div>
                   <div className="row-span-2 flex flex-row items-stretch justify-between">
                     <div className="ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs tracking-wider text-white">
