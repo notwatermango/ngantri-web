@@ -71,14 +71,7 @@ export const ticketRouter = createTRPCRouter({
         },
       });
 
-      try {
-        return { peopleAhead: peopleAhead, ticketDisplay: ticketDisplay };
-      } catch (e) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: `Ticket Detail`,
-        });
-      }
+      return { peopleAhead: peopleAhead, ticketDisplay: ticketDisplay };
     }),
   cancelTicket: protectedProcedure
     .input(
