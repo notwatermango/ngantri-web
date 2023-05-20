@@ -54,22 +54,21 @@ export const userRouter = createTRPCRouter({
     )
     .mutation(
       async ({ input: { userId, email, name, phone, address }, ctx }) => {
-        const user = await ctx.prisma.user.findUnique({
-          where: {
-            id: userId,
-          },
-        });
-        await ctx.prisma.user.update({
-          where: {
-            id: userId,
-          },
-          data: {
-            email: email,
-            name: name,
-            phone: phone,
-            address: address,
-          },
-        });
+        try {
+          await ctx.prisma.user.update({
+            where: {
+              id: userId,
+            },
+            data: {
+              email: email,
+              name: name,
+              phone: phone,
+              address: address,
+            },
+          });
+        } catch (error) {
+          console.log(error);
+        }
       }
     ),
 });
