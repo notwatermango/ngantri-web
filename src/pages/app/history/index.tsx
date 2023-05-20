@@ -22,28 +22,56 @@ const HistoryPage: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppLayout>
-        <h1>History</h1>
-        <div>list nya</div>
-        <ul className="flex max-h-full flex-col overflow-auto">
-          {user?.tickets.map((ticket) => {
-            // style ticket item here
-            return (
-              <li key={ticket.id} className="flex flex-col hover:bg-red-950">
-                <Link href={"/app/history/details/" + ticket.id}>
-                  <div>{ticket.merchant?.name}</div>
-                  <div>{ticket.createdAt.toString()}</div>
-                  <div>
-                    {ticket.status == 1
-                      ? "In Queue"
-                      : ticket.status == 2
-                      ? "Finished"
-                      : "Cancelled"}
+        <div className="flex h-full w-full flex-col bg-ultramarine px-8">
+          <div>
+            <div className="mt-5 flex flex-col items-center p-5">
+              <img
+                className="h-8 w-auto rounded"
+                src="https://i.ibb.co/hKQPjS6/Group-35-1.png"
+                alt="long-logo"
+              />
+            </div>
+          </div>
+          <ul className="max-h-full flex-col space-y-3 overflow-x-hidden py-4">
+            {user?.tickets.map((ticket) => {
+              // style ticket item here
+              return (
+                <li
+                  key={ticket.id}
+                  className="w-full resize-none rounded-lg border border-white bg-white p-1 text-sm text-black"
+                >
+                  <div className=" row-span-2 flex items-stretch">
+                    <div className="text-l block w-full bg-white px-0.5 text-left font-extrabold tracking-wide text-black">
+                      {ticket.merchant?.name}
+                    </div>
+                    <Link
+                      className="text-l block w-full bg-white px-0.5 text-right font-bold tracking-wide text-ultramarine"
+                      href={"/app/history/details/" + ticket.id}
+                    >
+                      more detail
+                    </Link>
                   </div>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                  <div className="ml-0.5 h-auto w-fit px-0.5 pb-1 text-left text-xs tracking-wider text-black">
+                    buat 3 org
+                  </div>
+                  <div className="row-span-2 flex flex-row items-stretch justify-between">
+                    <div className="ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs tracking-wider text-white">
+                      <span className="font-bold">{"Status : "}</span>
+                      {ticket.status == 1
+                        ? "In Queue"
+                        : ticket.status == 2
+                        ? "Finished"
+                        : "Cancelled"}
+                    </div>
+                    <div className="ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs font-bold tracking-wider text-white">
+                      A020
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </AppLayout>
     </>
   );
