@@ -86,6 +86,7 @@ const TicketDetailsPage: AuthNextPage = () => {
             </div>
             <div className="w-auto text-center">
               <h4 className="text-3xl font-bold text-white">
+                {ticket.peopleAhead * 6.5}
                 <span className="text-xs font-normal text-white">min</span>
               </h4>
               <h6 className="text-xs text-white">Est time</h6>
