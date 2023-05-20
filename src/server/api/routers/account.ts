@@ -1,7 +1,11 @@
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
 
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
+import {
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure,
+} from "~/server/api/trpc";
 
 export const accountRouter = createTRPCRouter({
   createUserAccount: publicProcedure
@@ -99,42 +103,82 @@ export const accountRouter = createTRPCRouter({
   getMerchantId: protectedProcedure
     .input(
       z.object({
-        accountId: z.string()
+        accountId: z.string(),
       })
     )
     .query(async ({ ctx, input: { accountId } }) => {
       return await ctx.prisma.account.findUnique({
         where: {
-          id: accountId
+          id: accountId,
         },
         select: {
           merchant: {
             select: {
               id: true,
-            }
-          }
-        }
+            },
+          },
+        },
       });
     }),
 
   getUserId: protectedProcedure
     .input(
       z.object({
-        accountId: z.string()
+        accountId: z.string(),
       })
     )
     .query(async ({ ctx, input: { accountId } }) => {
       return await ctx.prisma.account.findUnique({
         where: {
-          id: accountId
+          id: accountId,
         },
         select: {
           user: {
             select: {
               id: true,
-            }
-          }
-        }
+            },
+          },
+        },
       });
-    })
+    }),
+
+  getUserData: protectedProcedure
+    .input(
+      z.object({
+        userId: z.string(),
+      })
+    )
+    .query(async ({ ctx, input: { userId } }) => {
+      const user = await ctx.prisma.user.findUnique({
+        where: {
+          id: userId,
+        },
+      });
+      const name = user?.name;
+      const email = user?.email;
+      const phone = user?.phone;
+      const address = user?.address;
+
+      return { name: name, email: email, phone: phone, address: address };
+    }),
+
+  getMerchantData: protectedProcedure
+    .input(
+      z.object({
+        merchantId: z.string(),
+      })
+    )
+    .query(async ({ ctx, input: { merchantId } }) => {
+      const merchant = await ctx.prisma.merchant.findUnique({
+        where: {
+          id: merchantId,
+        },
+      });
+      const storeName = merchant?.name;
+      const email = merchant?.email;
+      const phone = merchant?.phone;
+      const address = merchant?.address;
+
+      return { name: storeName, email: email, phone: phone, address: address };
+    }),
 });

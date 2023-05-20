@@ -2,9 +2,30 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import AppLayout from "~/components/app/AppLayout";
 import type { AuthNextPage } from "~/types/pages";
+import { api } from "~/utils/api";
 
 const ProfilePage: AuthNextPage = () => {
   const { data: sessionData } = useSession();
+  const {
+    data: user,
+    isLoading,
+    error,
+  } = api.account.getUserData.useQuery({
+    userId: sessionData?.user ? sessionData?.user.id : "",
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!user) {
+    return <div>No ticket data found.</div>;
+  }
+
   return (
     <>
       <Head>
@@ -27,18 +48,22 @@ const ProfilePage: AuthNextPage = () => {
             </h1>
             <div className="mt-2 text-lg font-bold text-white">NAME</div>
             <div className="items-strecth text-md row-span-2 my-1 flex h-auto w-full flex-row justify-between rounded-lg border border-white bg-white p-1 text-start text-black">
-              <div className="w-4/6 pl-1 pt-0.5">Tara H</div>
+              <div className="w-4/6 pl-1 pt-0.5">{user.name}</div>
               <button className="block w-2/6 rounded-xl bg-ultramarine text-lg font-bold">
                 Edit
               </button>
             </div>
             <div className="mt-5 text-lg font-bold text-white">EMAIL</div>
             <div className="items-strecth text-md row-span-2 my-1 flex h-auto w-full flex-row justify-between rounded-lg border border-white bg-white p-1 text-start text-black">
-              <div className="w-4/6 pl-1 pt-0.5">{sessionData?.user.email}</div>
+              <div className="w-4/6 pl-1 pt-0.5">{user.email}</div>
             </div>
-            <div className="mt-5 text-lg font-bold text-white">USER ID</div>
+            <div className="mt-5 text-lg font-bold text-white">PHONE</div>
             <div className="items-strecth text-md row-span-2 my-1 flex h-auto w-full flex-row justify-between rounded-lg border border-white bg-white p-1 text-start text-black">
-              <div className="w-4/6 pl-1 pt-0.5">{sessionData?.user.id}</div>
+              <div className="w-4/6 pl-1 pt-0.5">{user.phone}</div>
+            </div>
+            <div className="mt-5 text-lg font-bold text-white">ADDRESS</div>
+            <div className="items-strecth text-md row-span-2 my-1 flex h-auto w-full flex-row justify-between rounded-lg border border-white bg-white p-1 text-start text-black">
+              <div className="w-4/6 pl-1 pt-0.5">{user.address}</div>
             </div>
           </div>
         </div>
