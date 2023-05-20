@@ -13,7 +13,7 @@ const OnBoardingPage: NextPage = () => {
         <meta name="description" content="Broh2 page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-ultramarine">
+      <main className="flex min-h-screen w-full flex-col items-center justify-center gap-y-5 bg-ultramarine">
         <div className="flex flex-col items-center gap-y-5 p-5">
           <img
             className="h-10 w-auto rounded"
@@ -29,17 +29,16 @@ const OnBoardingPage: NextPage = () => {
             alt="logo kcl light"
           />
         </div>
-        <div className="flex flex-col items-center gap-y-3 p-10">
-          {sessionData && (
-            <p className="font-semibold text-white">
-              Signed in as{" "}
-              <b>{sessionData.user.role == 1 ? "User" : "Merchant"}</b>
-              {": "}
-              {sessionData.user.email}
-            </p>
-          )}
+        {sessionData && (
+          <p className="font-semibold text-white">
+            Signed in as{" "}
+            <b>{sessionData.user.role == 1 ? "User " : "Merchant "}</b>
+            {sessionData.user.email}
+          </p>
+        )}
+        <div className="flex w-full flex-col items-center gap-y-3">
           <button
-            className="h-10 w-80 rounded-full bg-dark-blue font-bold text-white no-underline transition hover:bg-ultramarine-min hover:text-white "
+            className="full h-10 w-3/4 rounded-full bg-dark-blue font-bold text-white no-underline transition hover:bg-ultramarine-min hover:text-white "
             onClick={
               sessionData
                 ? () => void signOut()
@@ -49,8 +48,11 @@ const OnBoardingPage: NextPage = () => {
           >
             {sessionData ? "SIGN OUT" : "SIGN IN"}
           </button>
-          <Link href={sessionData ? "/auth/redirect" : "/signup"}>
-            <button className="h-10 w-80 rounded-full bg-white font-bold text-dark-blue no-underline transition hover:bg-ultramarine-min hover:text-white">
+          <Link
+            href={sessionData ? "/auth/redirect" : "/signup"}
+            className="flex w-3/4"
+          >
+            <button className="h-10 w-full rounded-full bg-white font-bold text-dark-blue no-underline transition hover:bg-ultramarine-min hover:text-white">
               {sessionData ? "CONTINUE" : "SIGN UP"}
             </button>
           </Link>
