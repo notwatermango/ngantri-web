@@ -40,4 +40,32 @@ export const merchantRouter = createTRPCRouter({
       }
       return merchant;
     }),
+  editMerchantProfile: protectedProcedure
+    .input(
+      z.object({
+        merchantId: z.string(),
+        email: z.string(),
+        storeName: z.string(),
+        phone: z.string(),
+        address: z.string(),
+      })
+    )
+    .mutation(async ({ input: { merchantId, email, storeName, phone, address }, ctx }) => {
+      const merchant = await ctx.prisma.merchant.findUnique({
+        where: {
+          id: merchantId,
+        },
+      });
+      await ctx.prisma.merchant.update({
+        where: {
+          id: merchantId,
+        },
+        data: {
+          email: email,
+          name: storeName,
+          phone: phone,
+          address: address,
+        },
+      });
+    }),
 });
