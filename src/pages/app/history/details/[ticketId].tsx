@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FormEvent } from "react";
+import type { FormEvent } from "react";
 import AppLayout from "~/components/app/AppLayout";
 import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
