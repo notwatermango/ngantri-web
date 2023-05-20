@@ -44,18 +44,18 @@ export const merchantRouter = createTRPCRouter({
     .input(
       z.object({
         merchantId: z.string(),
+        email: z.string(),
+        storeName: z.string(),
+        phone: z.string(),
+        address: z.string(),
       })
     )
-    .mutation(async ({ input: { merchantId }, ctx }) => {
+    .mutation(async ({ input: { merchantId, email, storeName, phone, address }, ctx }) => {
       const merchant = await ctx.prisma.merchant.findUnique({
         where: {
           id: merchantId,
         },
       });
-      const email = merchant?.email;
-      const storeName = merchant?.name;
-      const phone = merchant?.phone;
-      const address = merchant?.address;
       await ctx.prisma.merchant.update({
         where: {
           id: merchantId,

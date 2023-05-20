@@ -11,7 +11,7 @@ const TicketDetailsPage: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppLayout>
-        <div className="flex h-full w-full flex-col flex-col items-center justify-between bg-ultramarine p-16">
+        <div className="flex h-full w-full flex-col items-center justify-between bg-ultramarine p-16">
           <div className="flex flex-col items-center p-5">
             <img
               className="h-8 w-auto rounded"
