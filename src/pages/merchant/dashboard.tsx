@@ -56,6 +56,20 @@ const MerchantDashboard: AuthNextPage = () => {
               </div>
             </div>
           </div>
+          <div className="flex w-full">
+            <label className="relative inline-flex cursor-pointer items-center">
+              <input
+                type="checkbox"
+                checked={isStoreOpen}
+                onChange={() => setIsStoreOpen(!isStoreOpen)}
+                className="peer sr-only"
+              />
+              <div className="peer h-7 w-14 rounded-full bg-gray-200 after:absolute after:left-[4px] after:top-0.5 after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-teal-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-teal-800"></div>
+              <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                {isStoreOpen ? "Click to close store" : "Click to open store"}
+              </span>
+            </label>
+          </div>
         </div>
       </MerchantLayout>
     </>
