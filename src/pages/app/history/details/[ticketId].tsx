@@ -1,4 +1,3 @@
-import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FormEvent } from "react";
@@ -26,8 +25,10 @@ const TicketDetailsPage: AuthNextPage = () => {
     );
   };
 
-  const handleBack = () => {
-    router.push("/app/history");
+  const handleBack = async () => {
+    await router.push("/app/history").then(() => {
+      console.log("back to history page");
+    });
   };
 
   const {
