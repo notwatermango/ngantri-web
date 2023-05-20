@@ -46,10 +46,10 @@ export const userRouter = createTRPCRouter({
     .input(
       z.object({
         userId: z.string(),
-        email: z.string(),
-        name: z.string(),
-        phone: z.string(),
-        address: z.string(),
+        email: z.string().optional(),
+        name: z.string().optional(),
+        phone: z.string().optional(),
+        address: z.string().optional(),
       })
     )
     .mutation(
