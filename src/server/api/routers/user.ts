@@ -7,12 +7,13 @@ export const userRouter = createTRPCRouter({
   getUserWithTicketList: protectedProcedure
     .input(
       z.object({
-        userId: z.string()
+        userId: z.string(),
       })
-    ).query(async ({ input: { userId }, ctx }) => {
+    )
+    .query(async ({ input: { userId }, ctx }) => {
       const user = await ctx.prisma.user.findUnique({
         where: {
-          id: userId
+          id: userId,
         },
         include: {
           tickets: {
@@ -20,18 +21,18 @@ export const userRouter = createTRPCRouter({
               merchant: {
                 select: {
                   id: true,
-                  name: true
-                }
+                  name: true,
+                },
               },
               createdAt: true,
               status: true,
-              id: true
+              id: true,
             },
             orderBy: {
-              status: 'asc'
-            }
-          }
-        }
+              status: "asc",
+            },
+          },
+        },
       });
       if (!user) {
         throw new TRPCError({
@@ -40,5 +41,5 @@ export const userRouter = createTRPCRouter({
         });
       }
       return user;
-    })
+    }),
 });

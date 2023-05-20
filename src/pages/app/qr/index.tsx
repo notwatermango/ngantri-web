@@ -10,6 +10,7 @@ const QRPage: AuthNextPage = () => {
   const [qrData, setQrData] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onNewScanResult = (decodedText: string, decodedResult: string) => {
     setQrData(decodedText);
   };
@@ -65,6 +66,7 @@ const QRPage: AuthNextPage = () => {
             >
               <img
                 className="h-14"
+                alt="logo kamera"
                 src="https://i.postimg.cc/D4zT8n4q/camera-1.png"
               />
             </button>

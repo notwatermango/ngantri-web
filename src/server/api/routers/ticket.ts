@@ -9,17 +9,18 @@ export const ticketRouter = createTRPCRouter({
       z.object({
         userId: z.string(),
         merchantId: z.string(),
-        message: z.string()
+        message: z.string(),
       })
-    ).mutation(async ({ input: { merchantId, userId, message }, ctx }) => {
+    )
+    .mutation(async ({ input: { merchantId, userId, message }, ctx }) => {
       const latestTickets = await ctx.prisma.ticket.findMany({
         where: {
-          merchantId
+          merchantId,
         },
         orderBy: {
-          createdAt: 'desc',
+          createdAt: "desc",
         },
-        take: 1
+        take: 1,
       });
       const latestTicketDisplay = latestTickets?.at(0)?.display;
       let ticketNumber = 1;
@@ -34,8 +35,8 @@ export const ticketRouter = createTRPCRouter({
             userId,
             message,
             display: ticketNumber.toString(),
-            status: 1
-          }
+            status: 1,
+          },
         });
       } catch (e) {
         throw new TRPCError({
@@ -43,5 +44,5 @@ export const ticketRouter = createTRPCRouter({
           message: `Error creating ticket'`,
         });
       }
-    })
+    }),
 });
