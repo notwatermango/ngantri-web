@@ -143,23 +143,19 @@ export const accountRouter = createTRPCRouter({
     }),
 
   getUserData: protectedProcedure
-    .input(
-      z.object({
-        userId: z.string(),
-      })
-    )
-    .query(async ({ ctx, input: { userId } }) => {
+    .query(async ({ ctx }) => {
       const user = await ctx.prisma.user.findUnique({
         where: {
-          id: userId,
+          accountId: ctx.session.user.id
         },
+        select: {
+          name: true,
+          email: true,
+          phone: true,
+          address: true
+        }
       });
-      const name = user?.name;
-      const email = user?.email;
-      const phone = user?.phone;
-      const address = user?.address;
-
-      return { name: name, email: email, phone: phone, address: address };
+      return user;
     }),
 
   getMerchantData: protectedProcedure
