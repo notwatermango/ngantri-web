@@ -40,4 +40,31 @@ export const merchantRouter = createTRPCRouter({
       }
       return merchant;
     }),
+  getMerchantDashboardData: protectedProcedure
+    .input(
+      z.object({
+        merchantId: z.string(),
+      })
+    )
+    .query(async ({ input: { merchantId }, ctx }) => {
+      const inQueue = await ctx.prisma.ticket.count({
+        where: {
+          merchantId: merchantId,
+          status: 1,
+        },
+      });
+      const finished = await ctx.prisma.ticket.count({
+        where: {
+          merchantId: merchantId,
+          status: 2,
+        },
+      });
+      const cancelled = await ctx.prisma.ticket.count({
+        where: {
+          merchantId: merchantId,
+          status: 3,
+        },
+      });
+      return { inQueue: inQueue, finished: finished, cancelled: cancelled };
+    }),
 });
