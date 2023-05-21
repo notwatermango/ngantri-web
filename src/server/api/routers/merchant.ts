@@ -47,6 +47,12 @@ export const merchantRouter = createTRPCRouter({
       })
     )
     .query(async ({ input: { merchantId }, ctx }) => {
+      const merchant = await ctx.prisma.merchant.findUnique({
+        where: {
+          id: merchantId,
+        },
+      });
+      const isOpen = merchant?.isOpen;
       const inQueue = await ctx.prisma.ticket.count({
         where: {
           merchantId: merchantId,
@@ -65,6 +71,11 @@ export const merchantRouter = createTRPCRouter({
           status: 3,
         },
       });
-      return { inQueue: inQueue, finished: finished, cancelled: cancelled };
+      return {
+        isOpen: isOpen,
+        inQueue: inQueue,
+        finished: finished,
+        cancelled: cancelled,
+      };
     }),
 });
