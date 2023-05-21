@@ -40,4 +40,21 @@ export const merchantRouter = createTRPCRouter({
       }
       return merchant;
     }),
+  getMerchantProfile: protectedProcedure
+    .query(async ({ ctx }) => {
+      const merchant = await ctx.prisma.merchant.findUnique({
+        where: {
+          accountId: ctx.session.user.id
+        },
+        select: {
+          id: true,
+          name: true,
+          imageUrl: true,
+          email: true,
+          phone: true,
+          address: true,
+        }
+      })
+      return merchant;
+    })
 });
