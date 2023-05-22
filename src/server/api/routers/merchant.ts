@@ -98,32 +98,44 @@ export const merchantRouter = createTRPCRouter({
         },
       });
     }),
-  getMerchantActiveQueueList: protectedProcedure.query(async ({ ctx }) => {
-    return await ctx.prisma.merchant.findUnique({
-      where: {
-        accountId: ctx.session.user.id
-      },
-      select: {
-        tickets: {
-          where: {
-            OR: [
-              {status: 1},
-              {status: 4}
-            ]
-          },
-          select: {
-            user: {
-              select: {
-                name: true,
-                imageUrl: true,
+  getMerchantQueueList: protectedProcedure
+    .input(z.object({
+      isActiveQueue: z.boolean()
+    }))
+    .query(async ({ ctx, input: { isActiveQueue } }) => {
+      return await ctx.prisma.merchant.findUnique({
+        where: {
+          accountId: ctx.session.user.id
+        },
+        select: {
+          tickets: {
+            where: {
+              ...isActiveQueue ? {
+                OR: [
+                  { status: 1 },
+                  { status: 4 }
+                ]
+              } : {
+                OR: [
+                  { status: 2 },
+                  { status: 3 }
+                ]
               }
+              ,
             },
-            message: true,
-            id: true,
-            status: true,
+            select: {
+              user: {
+                select: {
+                  name: true,
+                  imageUrl: true,
+                }
+              },
+              message: true,
+              id: true,
+              status: true,
+            }
           }
         }
-      }
-    })
-  }),
+      })
+    }),
 });
