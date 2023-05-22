@@ -1,11 +1,13 @@
 import Head from "next/head";
+import { useState } from "react";
 import MerchantLayout from "~/components/merchant/MerchantLayout";
 import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
 
 const MerchantQueue: AuthNextPage = () => {
+  const [isActiveQueue, setIsActiveQueue] = useState(true);
   const { data: merchant, refetch } =
-    api.merchant.getMerchantActiveQueueList.useQuery();
+    api.merchant.getMerchantQueueList.useQuery({ isActiveQueue });
   const cancelTicket = api.ticket.cancelTicket.useMutation();
   const finishTicket = api.ticket.finishTicket.useMutation();
   const callCustomer = api.ticket.callTicketCustomer.useMutation();
@@ -35,13 +37,33 @@ const MerchantQueue: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MerchantLayout>
-        <div className="flex h-full flex-col bg-ultramarine">
-          <h1 className="mt-10 text-center text-5xl font-bold text-white">
-            Queue Page
-          </h1>
-          <h2 className="mt-10 text-center text-2xl font-bold text-white">
-            Total Queue: {merchant ? merchant.tickets.length : 0}
-          </h2>
+        <div className="flex h-full w-full flex-col items-center bg-ultramarine">
+          <h1 className="p-5 text-3xl font-bold text-white">Queue Page</h1>
+          <div className="flex flex-row justify-center rounded-full bg-white">
+            <div
+              onClick={() => setIsActiveQueue(true)}
+              className={`flex w-1/2 flex-col items-center px-3 py-1 text-sm text-black ${
+                isActiveQueue
+                  ? "h-full rounded-l-full bg-indigo-800 font-bold text-white"
+                  : ""
+              }`}
+            >
+              Active
+            </div>
+            <div
+              onClick={() => setIsActiveQueue(false)}
+              className={`flex w-1/2 flex-col items-center px-3 py-1 text-sm text-black ${
+                !isActiveQueue
+                  ? "h-full rounded-r-full bg-indigo-800 font-bold text-white"
+                  : ""
+              }`}
+            >
+              Inactive
+            </div>
+          </div>
+          <div className="px-5 text-left text-sm text-white">
+            count: {merchant ? merchant.tickets.length : 0}
+          </div>
           <ul className="flex max-h-full w-full flex-col items-center gap-y-2 overflow-y-auto overflow-x-hidden px-5 py-2">
             {merchant &&
               merchant.tickets.map((ticket) => {
@@ -121,6 +143,14 @@ const MerchantQueue: AuthNextPage = () => {
                             />
                           </svg>
                         </div>
+                      </div>
+                    ) : ticket.status == 2 ? (
+                      <div className="flex max-h-6 text-sm flex-row items-center rounded-lg bg-green-700 p-2 font-semibold text-white">
+                        Finished
+                      </div>
+                    ) : ticket.status == 3 ? (
+                      <div className="flex max-h-6 text-sm flex-row items-center rounded-lg bg-red-900 p-2 font-semibold text-white">
+                        Cancelled
                       </div>
                     ) : (
                       <></>
