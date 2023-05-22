@@ -89,4 +89,37 @@ export const ticketRouter = createTRPCRouter({
         },
       });
     }),
+  callTicketCustomer: protectedProcedure
+    .input(
+      z.object({
+        ticketId: z.string(),
+      })
+    )
+    .mutation(async ({ input: { ticketId }, ctx }) => {
+      await ctx.prisma.ticket.update({
+        where: {
+          id: ticketId,
+        },
+        data: {
+          status: 4, // call customer
+        },
+      });
+      // TODO: notify customer
+    }),
+  finishTicket: protectedProcedure
+    .input(
+      z.object({
+        ticketId: z.string(),
+      })
+    )
+    .mutation(async ({ input: { ticketId }, ctx }) => {
+      await ctx.prisma.ticket.update({
+        where: {
+          id: ticketId,
+        },
+        data: {
+          status: 2, // finish
+        },
+      });
+    }),
 });
