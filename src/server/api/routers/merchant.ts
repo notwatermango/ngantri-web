@@ -114,6 +114,7 @@ export const merchantRouter = createTRPCRouter({
             },
             message: true,
             id: true,
+            status: true,
           }
         }
       }
