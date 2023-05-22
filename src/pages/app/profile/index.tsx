@@ -1,4 +1,3 @@
-import { useSession } from "next-auth/react";
 import Head from "next/head";
 import AppLayout from "~/components/app/AppLayout";
 import type { AuthNextPage } from "~/types/pages";

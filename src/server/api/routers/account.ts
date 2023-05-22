@@ -142,21 +142,20 @@ export const accountRouter = createTRPCRouter({
       });
     }),
 
-  getUserData: protectedProcedure
-    .query(async ({ ctx }) => {
-      const user = await ctx.prisma.user.findUnique({
-        where: {
-          accountId: ctx.session.user.id
-        },
-        select: {
-          name: true,
-          email: true,
-          phone: true,
-          address: true
-        }
-      });
-      return user;
-    }),
+  getUserData: protectedProcedure.query(async ({ ctx }) => {
+    const user = await ctx.prisma.user.findUnique({
+      where: {
+        accountId: ctx.session.user.id,
+      },
+      select: {
+        name: true,
+        email: true,
+        phone: true,
+        address: true,
+      },
+    });
+    return user;
+  }),
 
   getMerchantData: protectedProcedure
     .input(
