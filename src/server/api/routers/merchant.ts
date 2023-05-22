@@ -41,42 +41,28 @@ export const merchantRouter = createTRPCRouter({
       return merchant;
     }),
   getMerchantDashboardData: protectedProcedure
-    .input(
-      z.object({
-        merchantId: z.string(),
-      })
-    )
-    .query(async ({ input: { merchantId }, ctx }) => {
+    .query(async ({ ctx }) => {
       const merchant = await ctx.prisma.merchant.findUnique({
         where: {
-          id: merchantId,
+          accountId: ctx.session.user.id,
         },
+        select: {
+          id: true,
+          name: true,
+          isOpen: true,
+        }
       });
-      const isOpen = merchant?.isOpen;
-      const inQueue = await ctx.prisma.ticket.count({
+      const ticketGroupData = await ctx.prisma.ticket.groupBy({
+        by: ['status'],
         where: {
-          merchantId: merchantId,
-          status: 1,
+          merchantId: merchant?.id
         },
+        _count: {
+          status: true,
+        }
       });
-      const finished = await ctx.prisma.ticket.count({
-        where: {
-          merchantId: merchantId,
-          status: 2,
-        },
-      });
-      const cancelled = await ctx.prisma.ticket.count({
-        where: {
-          merchantId: merchantId,
-          status: 3,
-        },
-      });
-      return {
-        isOpen: isOpen,
-        inQueue: inQueue,
-        finished: finished,
-        cancelled: cancelled,
-      };
+      const ticketGroup = ticketGroupData.map((ticket) => ({ status: ticket.status, count: ticket._count.status }));
+      return { ...merchant, ticketGroup };
     }),
   getMerchantProfile: protectedProcedure
     .query(async ({ ctx }) => {

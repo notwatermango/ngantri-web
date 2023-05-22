@@ -1,10 +1,17 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MerchantLayout from "~/components/merchant/MerchantLayout";
 import type { AuthNextPage } from "~/types/pages";
+import { api } from "~/utils/api";
 
 const MerchantDashboard: AuthNextPage = () => {
-  const [isStoreOpen, setIsStoreOpen] = useState(true);
+  const { data: merchant, isLoading } =
+    api.merchant.getMerchantDashboardData.useQuery();
+  const [isStoreOpen, setIsStoreOpen] = useState(merchant?.isOpen);
+  useEffect(() => {
+    setIsStoreOpen(merchant?.isOpen);
+    console.log(merchant);
+  }, [merchant]);
   return (
     <>
       <Head>
@@ -27,7 +34,7 @@ const MerchantDashboard: AuthNextPage = () => {
                 WELCOME,
               </div>
               <div className="text-md text-white md:text-lg">
-                New Store - Paskal 23
+                {merchant?.name}
               </div>
             </div>
             {isStoreOpen ? (
@@ -43,16 +50,34 @@ const MerchantDashboard: AuthNextPage = () => {
           <div className="flex w-full flex-col gap-y-5">
             <div className="flex w-full resize-none items-center justify-between rounded-lg border border-white bg-white p-5">
               <div className="text-lg font-bold text-black">IN QUEUE</div>
-              <div className="text-4xl font-bold text-black">14</div>
+              <div className="text-4xl font-bold text-black">
+                {merchant?.ticketGroup.find((ticket) => ticket.status == 1)
+                  ?.count
+                  ? merchant?.ticketGroup.find((ticket) => ticket.status == 1)
+                      ?.count
+                  : 0}
+              </div>
             </div>
             <div className="grid grid-cols-2 gap-5">
               <div className="flex-col items-center justify-between gap-3 rounded-lg border border-white bg-white p-5">
                 <div className="text-md font-bold text-black">FINISHED</div>
-                <div className="text-4xl font-bold text-black">999</div>
+                <div className="text-4xl font-bold text-black">
+                  {merchant?.ticketGroup.find((ticket) => ticket.status == 2)
+                    ?.count
+                    ? merchant?.ticketGroup.find((ticket) => ticket.status == 2)
+                        ?.count
+                    : 0}
+                </div>
               </div>
               <div className="flex-col items-center justify-between gap-3 rounded-lg border border-white bg-white p-5">
                 <div className="text-md font-bold text-black">CANCELLED</div>
-                <div className="text-4xl font-bold text-black">14</div>
+                <div className="text-4xl font-bold text-black">
+                  {merchant?.ticketGroup.find((ticket) => ticket.status == 3)
+                    ?.count
+                    ? merchant?.ticketGroup.find((ticket) => ticket.status == 3)
+                        ?.count
+                    : 0}
+                </div>
               </div>
             </div>
           </div>
