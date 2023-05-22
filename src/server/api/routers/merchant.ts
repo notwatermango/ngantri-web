@@ -40,6 +40,30 @@ export const merchantRouter = createTRPCRouter({
       }
       return merchant;
     }),
+  getMerchantDashboardData: protectedProcedure
+    .query(async ({ ctx }) => {
+      const merchant = await ctx.prisma.merchant.findUnique({
+        where: {
+          accountId: ctx.session.user.id,
+        },
+        select: {
+          id: true,
+          name: true,
+          isOpen: true,
+        }
+      });
+      const ticketGroupData = await ctx.prisma.ticket.groupBy({
+        by: ['status'],
+        where: {
+          merchantId: merchant?.id
+        },
+        _count: {
+          status: true,
+        }
+      });
+      const ticketGroup = ticketGroupData.map((ticket) => ({ status: ticket.status, count: ticket._count.status }));
+      return { ...merchant, ticketGroup };
+    }),
   getMerchantProfile: protectedProcedure
     .query(async ({ ctx }) => {
       const merchant = await ctx.prisma.merchant.findUnique({
@@ -56,5 +80,5 @@ export const merchantRouter = createTRPCRouter({
         }
       })
       return merchant;
-    })
+    }),
 });
