@@ -81,4 +81,19 @@ export const merchantRouter = createTRPCRouter({
       })
       return merchant;
     }),
+  openOrCloseStore: protectedProcedure
+    .input(
+      z.object({
+        isOpen: z.boolean()
+      }))
+    .mutation(async ({ ctx, input: { isOpen } }) => {
+      await ctx.prisma.merchant.update({
+        where: {
+          accountId: ctx.session.user.id
+        },
+        data: {
+          isOpen
+        },
+      });
+    }),
 });
