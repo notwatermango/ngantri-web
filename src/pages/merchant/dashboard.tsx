@@ -5,12 +5,10 @@ import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
 
 const MerchantDashboard: AuthNextPage = () => {
-  const { data: merchant, isLoading } =
-    api.merchant.getMerchantDashboardData.useQuery();
+  const { data: merchant } = api.merchant.getMerchantDashboardData.useQuery();
   const [isStoreOpen, setIsStoreOpen] = useState(merchant?.isOpen);
   useEffect(() => {
     setIsStoreOpen(merchant?.isOpen);
-    console.log(merchant);
   }, [merchant]);
   return (
     <>
