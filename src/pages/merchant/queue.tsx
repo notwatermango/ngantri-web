@@ -4,7 +4,15 @@ import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
 
 const MerchantQueue: AuthNextPage = () => {
-  const { data: merchant } = api.merchant.getMerchantAndQueueList.useQuery();
+  const { data: merchant, refetch } =
+    api.merchant.getMerchantActiveQueueList.useQuery();
+  const cancelTicket = api.ticket.cancelTicket.useMutation();
+  const handleCancelTicket = async (ticketId: string) => {
+    await cancelTicket.mutateAsync({
+      ticketId,
+    });
+    await refetch();
+  };
   return (
     <>
       <Head>
@@ -24,7 +32,10 @@ const MerchantQueue: AuthNextPage = () => {
             {merchant &&
               merchant.tickets.map((ticket) => {
                 return (
-                  <li className="flex w-full flex-row justify-between rounded-2xl bg-white p-3">
+                  <li
+                    key={ticket.id}
+                    className="flex w-full flex-row justify-between rounded-2xl bg-white p-3"
+                  >
                     <div className="flex items-center">
                       <div className="flex-col">
                         <div className="mr-5">
@@ -37,7 +48,10 @@ const MerchantQueue: AuthNextPage = () => {
                     </div>
                     {ticket.status == 1 ? (
                       <div className="flex flex-row gap-2">
-                        <div className="group flex h-full items-center rounded-lg bg-indigo-100 fill-rose-900 px-2 hover:cursor-pointer">
+                        <div
+                          onClick={() => handleCancelTicket(ticket.id)}
+                          className="group flex h-full items-center rounded-lg bg-indigo-100 fill-rose-900 px-2 hover:cursor-pointer"
+                        >
                           <svg
                             width="24"
                             height="24"
