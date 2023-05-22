@@ -7,13 +7,7 @@ import { api } from "~/utils/api";
 
 const HistoryPage: AuthNextPage = () => {
   // get history by list
-  const { data: sessionData } = useSession();
-  const { data: account } = api.account.getUserId.useQuery({
-    accountId: sessionData ? sessionData.user.id : "",
-  });
-  const { data: user } = api.user.getUserWithTicketList.useQuery({
-    userId: account?.user ? account.user.id : "",
-  });
+  const { data: user } = api.user.getUserWithTicketList.useQuery();
 
   return (
     <>
@@ -23,7 +17,7 @@ const HistoryPage: AuthNextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AppLayout>
-        <div className="flex h-full w-full flex-col bg-ultramarine px-8">
+        <div className="flex h-full w-full flex-col bg-ultramarine px-5">
           <div>
             <div className="mt-5 flex flex-col items-center p-5">
               <img
@@ -39,33 +33,32 @@ const HistoryPage: AuthNextPage = () => {
               return (
                 <li
                   key={ticket.id}
-                  className="w-full resize-none rounded-lg border border-white bg-white p-1 text-sm text-black"
+                  className="w-full resize-none rounded-lg border border-white bg-white p-2 text-sm text-black"
                 >
                   <div className=" row-span-2 flex items-stretch">
-                    <div className="text-l block w-full bg-white px-0.5 text-left font-extrabold tracking-wide text-black">
+                    <div className="text-l block w-full bg-white px-0.5 text-left font-extrabold text-black">
                       {ticket.merchant?.name}
                     </div>
                     <Link
-                      className="text-l block w-full bg-white px-0.5 text-right font-bold tracking-wide text-ultramarine"
+                      className="text-l block w-full bg-white px-0.5 text-right text-ultramarine"
                       href={"/app/history/details/" + ticket.id}
                     >
-                      more detail
+                      more details
                     </Link>
                   </div>
-                  <div className="ml-0.5 h-auto w-fit px-0.5 pb-1 text-left text-xs tracking-wider text-black">
-                    {/* {ticket.message} */}
+                  <div className="h-auto w-fit px-0.5 py-2 text-left text-xs text-black">
+                    {ticket.message}
                   </div>
                   <div className="row-span-2 flex flex-row items-stretch justify-between">
                     <div className="ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs tracking-wider text-white">
-                      <span className="font-bold">{"Status : "}</span>
                       {ticket.status == 1
                         ? "In Queue"
                         : ticket.status == 2
                         ? "Finished"
                         : "Cancelled"}
                     </div>
-                    <div className="ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs font-bold tracking-wider text-white">
-                      A020
+                    <div className="ml-0.5 h-auto w-fit rounded-lg bg-ultramarine p-1 text-left text-xs tracking-wider text-white">
+                      Ticket <span className="font-bold">{ticket.display}</span>
                     </div>
                   </div>
                 </li>
