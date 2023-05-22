@@ -5,11 +5,25 @@ import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
 
 const MerchantDashboard: AuthNextPage = () => {
-  const { data: merchant } = api.merchant.getMerchantDashboardData.useQuery();
-  const [isStoreOpen, setIsStoreOpen] = useState(merchant?.isOpen);
+  const { data: merchant, refetch } =
+    api.merchant.getMerchantDashboardData.useQuery();
+  const updateStoreOpenClose = api.merchant.openOrCloseStore.useMutation();
+  // Avoid uncrontrolled input warning
+  const [isStoreOpen, setIsStoreOpen] = useState(
+    merchant ? merchant.isOpen : false
+  );
+
   useEffect(() => {
     setIsStoreOpen(merchant?.isOpen);
   }, [merchant]);
+
+  const handleStoreOpenChange = () => {
+    updateStoreOpenClose.mutate(
+      { isOpen: !isStoreOpen },
+      { onSuccess: () => refetch() }
+    );
+  };
+
   return (
     <>
       <Head>
@@ -84,7 +98,7 @@ const MerchantDashboard: AuthNextPage = () => {
               <input
                 type="checkbox"
                 checked={isStoreOpen}
-                onChange={() => setIsStoreOpen(!isStoreOpen)}
+                onChange={handleStoreOpenChange}
                 className="peer sr-only"
               />
               <div className="peer h-7 w-14 rounded-full bg-gray-200 after:absolute after:left-[4px] after:top-0.5 after:h-6 after:w-6 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-teal-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-teal-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-teal-800"></div>
