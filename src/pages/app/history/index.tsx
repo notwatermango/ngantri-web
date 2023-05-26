@@ -13,7 +13,7 @@ const HistoryPage: AuthNextPage = () => {
       <Head>
         <title>History</title>
         <meta name="description" content="History ato ticket apapun itu" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <AppLayout>
         <div className="flex h-full w-full flex-col bg-ultramarine px-5">

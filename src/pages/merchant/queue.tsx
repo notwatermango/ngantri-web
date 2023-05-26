@@ -34,7 +34,7 @@ const MerchantQueue: AuthNextPage = () => {
       <Head>
         <title>Queue</title>
         <meta name="description" content="Queue list" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <MerchantLayout>
         <div className="flex h-full w-full flex-col items-center bg-ultramarine">

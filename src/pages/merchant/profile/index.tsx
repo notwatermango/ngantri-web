@@ -10,7 +10,7 @@ const MerchantProfile: AuthNextPage = () => {
       <Head>
         <title>Profile</title>
         <meta name="description" content="Merchant profile" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <MerchantLayout>
         {/* for styling can copy user profile page for reference */}

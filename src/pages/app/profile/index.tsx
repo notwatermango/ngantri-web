@@ -15,7 +15,7 @@ const ProfilePage: AuthNextPage = () => {
       <Head>
         <title>Profile</title>
         <meta name="description" content="Profile" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <AppLayout>
         <div className="flex h-full w-full flex-col justify-center gap-y-5 overflow-y-auto bg-ultramarine p-5 md:p-8">

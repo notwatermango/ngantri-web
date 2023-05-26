@@ -56,7 +56,7 @@ const TicketDetailsPage: AuthNextPage = () => {
       <Head>
         <title>Details</title>
         <meta name="description" content="Ticket details pas di klik" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <AppLayout>
         <div className="flex h-full w-full flex-col items-center justify-between bg-ultramarine p-16">

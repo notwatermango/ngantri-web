@@ -30,7 +30,7 @@ const QRPage: AuthNextPage = () => {
       <Head>
         <title>Scan QR</title>
         <meta name="description" content="QR index" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <AppLayout>
         <div className="flex h-full w-full flex-col items-center justify-center gap-y-5 bg-ultramarine">

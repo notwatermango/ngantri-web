@@ -45,7 +45,7 @@ const ConfirmationPage: AuthNextPage = () => {
       <Head>
         <title>Confirmation</title>
         <meta name="description" content="QR confirmation" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <AppLayout>
         <div className="flex h-full w-full flex-col justify-center bg-ultramarine px-5 md:p-8">
