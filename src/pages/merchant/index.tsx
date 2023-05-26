@@ -15,7 +15,7 @@ const MerchantHome: AuthNextPage = () => {
       <Head>
         <title>Home</title>
         <meta name="description" content="Merchant home" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <MerchantLayout>
         <h1></h1>

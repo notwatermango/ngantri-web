@@ -9,9 +9,9 @@ const OnBoardingPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Broh2</title>
-        <meta name="description" content="Broh2 page" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Ngantri.co.id</title>
+        <meta name="description" content="Ngantri.co.id page" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <main className="flex min-h-screen w-full flex-col items-center justify-center gap-y-5 bg-ultramarine">
         <div className="flex flex-col items-center gap-y-5 p-5">

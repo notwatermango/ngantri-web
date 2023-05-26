@@ -47,7 +47,7 @@ const UserSignup: NextPage = () => {
       <Head>
         <title>User Sign Up</title>
         <meta name="description" content="Sign up user" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-ultramarine">
         <h1 className="text-center font-bold text-white">Reserve your seat</h1>

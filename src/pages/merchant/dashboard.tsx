@@ -29,7 +29,7 @@ const MerchantDashboard: AuthNextPage = () => {
       <Head>
         <title>Dashboard</title>
         <meta name="description" content="Merchant dashboard" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <MerchantLayout>
         <div className="flex h-full w-full flex-col items-center justify-center gap-y-5 overflow-y-auto bg-ultramarine px-5 md:p-8">

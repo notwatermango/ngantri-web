@@ -8,7 +8,7 @@ const SignUpPage: NextPage = () => {
       <Head>
         <title>Sign Up</title>
         <meta name="description" content="Sign up page" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center gap-y-5 bg-ultramarine">
         <div className="flex flex-col items-center gap-y-5 p-5">

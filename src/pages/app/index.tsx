@@ -15,7 +15,7 @@ const AppHome: AuthNextPage = () => {
       <Head>
         <title>Home</title>
         <meta name="description" content="App home" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <AppLayout>
         <h1></h1>

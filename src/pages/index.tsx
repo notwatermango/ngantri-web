@@ -6,9 +6,9 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Broh</title>
+        <title>Ngantri.co.id</title>
         <meta name="description" content="Landing page" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
 
       <main className="flex min-h-screen flex-col items-center gap-y-5 bg-white">
