@@ -26,8 +26,8 @@ const MerchantBottomNavigation = () => {
             <button type="button">
               <img
                 className="w-10"
-                src="https://i.postimg.cc/XXN32c1p/scan.png"
-                alt="Scan"
+                src="https://i.postimg.cc/r0kD91tj/dashboard.png"
+                alt="Dashboard"
               />
             </button>
           </Link>
@@ -41,8 +41,8 @@ const MerchantBottomNavigation = () => {
             >
               <img
                 className="w-10"
-                src="https://i.postimg.cc/py0v3h3k/history1.png"
-                alt="History"
+                src="https://i.postimg.cc/jWNWNgCC/queue.png"
+                alt="Queue"
               />
             </button>
           </Link>
