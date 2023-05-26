@@ -141,4 +141,39 @@ export const accountRouter = createTRPCRouter({
         },
       });
     }),
+
+  getUserData: protectedProcedure.query(async ({ ctx }) => {
+    const user = await ctx.prisma.user.findUnique({
+      where: {
+        accountId: ctx.session.user.id,
+      },
+      select: {
+        name: true,
+        email: true,
+        phone: true,
+        address: true,
+      },
+    });
+    return user;
+  }),
+
+  getMerchantData: protectedProcedure
+    .input(
+      z.object({
+        merchantId: z.string(),
+      })
+    )
+    .query(async ({ ctx, input: { merchantId } }) => {
+      const merchant = await ctx.prisma.merchant.findUnique({
+        where: {
+          id: merchantId,
+        },
+      });
+      const storeName = merchant?.name;
+      const email = merchant?.email;
+      const phone = merchant?.phone;
+      const address = merchant?.address;
+
+      return { name: storeName, email: email, phone: phone, address: address };
+    }),
 });

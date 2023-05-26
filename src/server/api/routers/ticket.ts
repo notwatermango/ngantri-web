@@ -45,4 +45,81 @@ export const ticketRouter = createTRPCRouter({
         });
       }
     }),
+  seeTicketDetail: protectedProcedure
+    .input(
+      z.object({
+        ticketId: z.string(),
+      })
+    )
+    .query(async ({ input: { ticketId }, ctx }) => {
+      const ticket = await ctx.prisma.ticket.findUnique({
+        where: {
+          id: ticketId,
+        },
+      });
+      const merchantId = ticket?.merchantId;
+      const ticketDisplay = ticket?.display;
+      const createdAt = ticket?.createdAt;
+      const peopleAhead = await ctx.prisma.ticket.count({
+        where: {
+          merchantId,
+          status: 1,
+          display: {
+            not: { equals: ticketDisplay },
+          },
+          createdAt: { lt: createdAt },
+        },
+      });
+
+      return { peopleAhead: peopleAhead, ticketDisplay: ticketDisplay };
+    }),
+  cancelTicket: protectedProcedure
+    .input(
+      z.object({
+        ticketId: z.string(),
+      })
+    )
+    .mutation(async ({ input: { ticketId }, ctx }) => {
+      await ctx.prisma.ticket.update({
+        where: {
+          id: ticketId,
+        },
+        data: {
+          status: 3,
+        },
+      });
+    }),
+  callTicketCustomer: protectedProcedure
+    .input(
+      z.object({
+        ticketId: z.string(),
+      })
+    )
+    .mutation(async ({ input: { ticketId }, ctx }) => {
+      await ctx.prisma.ticket.update({
+        where: {
+          id: ticketId,
+        },
+        data: {
+          status: 4, // call customer
+        },
+      });
+      // TODO: notify customer
+    }),
+  finishTicket: protectedProcedure
+    .input(
+      z.object({
+        ticketId: z.string(),
+      })
+    )
+    .mutation(async ({ input: { ticketId }, ctx }) => {
+      await ctx.prisma.ticket.update({
+        where: {
+          id: ticketId,
+        },
+        data: {
+          status: 2, // finish
+        },
+      });
+    }),
 });
