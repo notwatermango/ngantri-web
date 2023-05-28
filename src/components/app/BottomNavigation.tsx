@@ -5,7 +5,7 @@ import Link from "next/link";
 const AppBottomNavigation = () => {
   return (
     <>
-      <div className="fixed bottom-0 left-0 z-50 h-16 w-full rounded-full bg-white">
+      <div className="fixed bottom-0 left-0 z-50 h-16 w-full bg-white">
         <div className="mx-auto grid h-full max-w-xs grid-cols-3 ">
           <Link
             href="/app/profile"

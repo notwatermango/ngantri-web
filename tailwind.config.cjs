@@ -4,18 +4,20 @@ const config = {
   theme: {
     extend: {
       colors: {
-        'ultramarine' : '#3566FF',
-        'white' : '#FFFFFF',
-        'dark-blue' : '#232B53',
-        'black' : '#000000',
-        'ultramarine-max' : '#4249FF',
-        'ultramarine-min' : '#00D1FF'
-      }
+        ultramarine: "#3566FF",
+        white: "#FFFFFF",
+        "dark-blue": "#232B53",
+        black: "#000000",
+        "ultramarine-max": "#4249FF",
+        "ultramarine-min": "#00D1FF",
+      },
+      fontFamily: {
+        merriweather: ['"Merriweather"', "serif"],
+        inter: ['"Inter"', "sans-serif"],
+      },
     },
   },
-  plugins: [
-    require('prettier-plugin-tailwindcss')
-  ],
+  plugins: [require("prettier-plugin-tailwindcss")],
 };
 
 module.exports = config;
