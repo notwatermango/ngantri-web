@@ -9,7 +9,7 @@ const ProfilePage: AuthNextPage = () => {
 
   if (isLoading) {
     return (
-      <div className="flex h-full w-full place-content-center font-extrabold text-ultramarine-max">
+      <div className="flex h-screen w-full flex-col place-content-center items-center justify-center font-extrabold text-ultramarine-max">
         <svg
           aria-hidden="true"
           className="mr-2 h-8 w-8 animate-spin fill-ultramarine-max text-gray-200"
