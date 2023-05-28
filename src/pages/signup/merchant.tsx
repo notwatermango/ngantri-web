@@ -122,7 +122,7 @@ const MerchantSignup: NextPage = () => {
           </div>
           <button
             onClick={(e) => void handleCreateAccount(e)}
-            className="mb-2 mt-5 place-content-center rounded-3xl border border-gray-300 bg-white px-5 py-2 text-sm font-bold text-dark-blue hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200"
+            className="mb-2 mt-5 place-content-center rounded-3xl bg-dark-blue px-5 py-2 text-sm font-bold text-white"
           >
             SIGN UP
           </button>
