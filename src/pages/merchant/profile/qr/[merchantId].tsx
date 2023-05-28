@@ -26,7 +26,7 @@ const QrPage: NextPage = () => {
       <Head>
         <title>Qr Ngantri</title>
         <meta name="description" content="Show QR Ngantri" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <MerchantLayout>
         <div className="flex h-full w-full flex-col items-center justify-center bg-ultramarine text-white">
