@@ -2,6 +2,7 @@ import Head from "next/head";
 import MerchantLayout from "~/components/merchant/MerchantLayout";
 import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
+import { signOut } from "next-auth/react";
 
 const MerchantProfile: AuthNextPage = () => {
   const { data: merchant } = api.merchant.getMerchantProfile.useQuery();
@@ -29,8 +30,7 @@ const MerchantProfile: AuthNextPage = () => {
               src="https://i.postimg.cc/xCKmZhpd/burger-1.png"
               alt="burger"
             />
-            <p className="text-center text-xl text-black font-semibold">{merchant?.id}</p>
-            <p className="text-center text-lg font-medium">{merchant?.name}</p>
+            <p className="text-center text-xl text-black font-semibold">{merchant?.name}</p>
             <p className="text-center text-lg font-medium underline underline-offset-2">{merchant?.email}</p>
             <p className="text-center text-lg font-medium">{merchant?.phone}</p>
             <p className="text-center text-lg font-medium">{merchant?.address}</p>
@@ -39,7 +39,19 @@ const MerchantProfile: AuthNextPage = () => {
             <p className="text-lg font-semibold">Edit Store Profile</p> 
             {/* ini button harusnya */}
           </div>
+
+          <button
+            className="full h-10 w-full rounded-lg bg-white font-bold no-underline transition hover:bg-dark-blue hover:text-white "
+            onClick={
+              () => void signOut()
+            }
+          >LOG OUT</button>
+
+
+
           </div>
+
+          
 
         
       </MerchantLayout>
