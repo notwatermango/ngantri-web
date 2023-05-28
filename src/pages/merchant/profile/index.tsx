@@ -3,6 +3,7 @@ import MerchantLayout from "~/components/merchant/MerchantLayout";
 import type { AuthNextPage } from "~/types/pages";
 import { api } from "~/utils/api";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 const MerchantProfile: AuthNextPage = () => {
   const { data: merchant } = api.merchant.getMerchantProfile.useQuery();
@@ -16,44 +17,48 @@ const MerchantProfile: AuthNextPage = () => {
       <MerchantLayout>
         <div className="flex h-full w-full flex-col justify-center gap-y-5 overflow-y-auto bg-ultramarine p-5 md:p-8">
           <p className="text-center text-2xl font-bold leading-none text-white dark:text-white md:text-5xl lg:text-6xl ">
-                STORE PROFILE
-              </p>
-            {/* for styling can copy user profile page for reference */}
-          {/* leave  merchant id here for debugging and creating QR confirmation page */}
-          {/* delete after implementing generate qr code */}
-          <div className="flex flex-col items-center justify-center bg-white p-5 rounded-lg">
-            
-
-
+            STORE PROFILE
+          </p>
+          <div className="flex flex-col items-center justify-center rounded-lg bg-white p-5">
             <img
-              className="h-20 w-auto rounded m-3"
+              className="m-3 h-20 w-auto rounded"
               src="https://i.postimg.cc/xCKmZhpd/burger-1.png"
               alt="burger"
             />
-            <p className="text-center text-xl text-black font-semibold">{merchant?.name}</p>
-            <p className="text-center text-lg font-medium underline underline-offset-2">{merchant?.email}</p>
+            <p className="text-center text-xl font-semibold text-black">
+              {merchant?.name}
+            </p>
+            <p className="text-center text-lg font-medium underline underline-offset-2">
+              {merchant?.email}
+            </p>
             <p className="text-center text-lg font-medium">{merchant?.phone}</p>
-            <p className="text-center text-lg font-medium">{merchant?.address}</p>
+            <p className="text-center text-lg font-medium">
+              {merchant?.address}
+            </p>
           </div>
-          <div className="flex flex-col items-center justify-center bg-white p-2 rounded-lg ">
-            <p className="text-lg font-semibold">Edit Store Profile</p> 
+          <div className="flex flex-col items-center justify-center rounded  ">
+            <Link
+              href={`/merchant/profile/qr/${merchant?.id}`}
+              className="h-full w-full"
+            >
+              <button className="w-full rounded-lg bg-green-800 p-2 font-bold text-white no-underline transition hover:bg-green-900 ">
+                Show Ngantri QR
+              </button>
+            </Link>
+          </div>
+          <div className="flex flex-col items-center justify-center rounded-lg bg-white p-2 ">
+            <p className="font-semibold">Edit Store Profile</p>
             {/* ini button harusnya */}
           </div>
-
-          <button
-            className="full h-10 w-full rounded-lg bg-white font-bold no-underline transition hover:bg-dark-blue hover:text-white "
-            onClick={
-              () => void signOut()
-            }
-          >LOG OUT</button>
-
-
-
+          <div className="flex flex-col items-center justify-center rounded-lg bg-white ">
+            <button
+              className="w-full rounded-lg bg-red-800 p-2 font-bold text-white no-underline transition hover:bg-red-900 "
+              onClick={() => void signOut()}
+            >
+              LOG OUT
+            </button>
           </div>
-
-          
-
-        
+        </div>
       </MerchantLayout>
     </>
   );
