@@ -2,7 +2,7 @@
 
 ## About
 
-TBA
+Web app prototype for Ngantri, a queue management app for customers and merchants. ... (TBA)
 
 ## Development
 
@@ -14,4 +14,4 @@ TBA
 
 ## Notes
 
-TBA
+As a team of beginners we tried implementing monorepo git flow.
