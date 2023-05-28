@@ -33,7 +33,7 @@ export default function SignIn({
               <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
               <label className="font-semibold text-white">EMAIL</label>
               <input
-                className="block w-64 rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                className="block w-full rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="example@gmail.com"
                 name="email"
                 type="email"
@@ -43,7 +43,7 @@ export default function SignIn({
             <div className="flex w-3/4 flex-col">
               <label className="font-semibold text-white">PASSWORD</label>
               <input
-                className="block w-64 rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                className="block w-full rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                 name="password"
                 type="password"
                 placeholder="example123"

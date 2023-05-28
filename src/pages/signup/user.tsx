@@ -77,7 +77,7 @@ const UserSignup: NextPage = () => {
               name="password"
               type="password"
               value={password}
-              placeholder="example123"
+              placeholder="********"
               onChange={(e) => setPassword(e.target.value)}
               className="mt-2 block w-64 rounded-lg border border-white bg-white p-2 pl-5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
             />

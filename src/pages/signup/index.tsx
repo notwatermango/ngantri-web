@@ -26,10 +26,10 @@ const SignUpPage: NextPage = () => {
             alt="logo kcl light"
           />
         </div>
-        <div className="mt-10 flex w-full flex-row items-center gap-y-3 text-center font-inter font-bold text-white">
+        <div className="mt-10 flex w-full flex-row items-center justify-center gap-x-4 gap-y-3 px-4 text-center font-inter font-bold text-white">
           <Link
             href="/signup/user"
-            className="ml-8 mr-5 flex w-3/4 flex-col rounded-3xl bg-dark-blue p-5"
+            className="flex w-3/4 flex-col items-center rounded-3xl bg-dark-blue p-5"
           >
             <svg
               width="93"
@@ -64,7 +64,7 @@ const SignUpPage: NextPage = () => {
           </Link>
           <Link
             href="/signup/merchant"
-            className="mr-10 flex w-3/4 flex-col rounded-3xl bg-dark-blue p-5"
+            className="flex w-3/4 flex-col items-center rounded-3xl bg-dark-blue p-5"
           >
             <svg
               width="91"

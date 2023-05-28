@@ -12,14 +12,14 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex min-h-screen flex-col items-center gap-y-5">
-        <div className="mt-10 flex w-full flex-col items-center justify-center bg-gradient-to-r p-7">
+        <div className="flex w-full flex-col items-center justify-center p-7 sm:bg-ultramarine sm:bg-gradient-to-r sm:from-ultramarine-min sm:to-ultramarine-max">
           <svg
             width="360"
             height="442"
             viewBox="0 0 360 442"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute -z-10 ml-3"
+            className="absolute -z-10 w-full sm:hidden"
           >
             <path
               fill-rule="evenodd"
@@ -75,22 +75,22 @@ const Home: NextPage = () => {
         </div>
         <div className="flex flex-col items-center gap-y-5 p-5">
           <img
-            className="ml-5 h-auto w-20 rounded"
+            className="h-auto w-20 rounded"
             src="https://i.postimg.cc/hhczLtzc/logo-kcl-dark.png"
             alt="logo kecil dark"
           />
           <img
-            className="ml-5 h-10 w-auto rounded"
+            className="h-10 w-auto rounded"
             src="https://i.postimg.cc/V0fJmKQd/logo-pjg-dark.png"
             alt="logo jpg dark"
           />
 
-          <p className="ml-5 w-48 text-center font-bold text-dark-blue ">
+          <p className="w-48 text-center font-bold text-dark-blue ">
             Reserve your seat wherever and whenever
           </p>
 
           <Link href="/onboarding">
-            <button className="ml-5 w-52 rounded-full bg-gradient-to-r from-ultramarine-min to-ultramarine-max px-7 py-2 text-sm font-bold text-white no-underline transition hover:text-white">
+            <button className="w-52 rounded-full bg-gradient-to-r from-ultramarine-min to-ultramarine-max px-7 py-2 text-sm font-bold text-white no-underline transition hover:text-white">
               GET STARTED
             </button>
           </Link>
