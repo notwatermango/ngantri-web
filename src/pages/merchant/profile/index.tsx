@@ -38,7 +38,7 @@ const MerchantProfile: AuthNextPage = () => {
           </div>
           <div className="flex flex-col items-center justify-center rounded  ">
             <Link
-              href={`/merchant/profile/qr/${merchant?.id}`}
+              href={`/merchant/profile/qr/${merchant?.id as string}`}
               className="h-full w-full"
             >
               <button className="w-full rounded-lg bg-green-800 p-2 font-bold text-white no-underline transition hover:bg-green-900 ">
