@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import Head from "next/head";
 import AppLayout from "~/components/app/AppLayout";
 import type { AuthNextPage } from "~/types/pages";
@@ -81,6 +82,14 @@ const ProfilePage: AuthNextPage = () => {
                   {user ? user.address : "-"}
                 </div>
               </div>
+            </div>
+            <div className="mt-5">
+              <button
+                className="full h-10 w-full max-w-xs rounded-lg bg-red-800 font-bold text-white no-underline transition hover:bg-red-900 hover:text-white "
+                onClick={() => void signOut()}
+              >
+                LOG OUT
+              </button>
             </div>
           </div>
         </div>
