@@ -100,6 +100,7 @@ const TicketDetailsPage: AuthNextPage = () => {
               <button
                 className="text-start text-sm font-bold text-white underline"
                 onClick={handleUpdateTicket}
+                disabled={loadingButton}
               >
                 {loadingButton ? (
                   <div>
