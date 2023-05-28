@@ -52,7 +52,7 @@ export default function SignIn({
           </div>
           <div className="flex w-full items-center justify-center">
             <button
-              className="h-10 w-3/4 rounded-full bg-dark-blue font-bold text-white  no-underline transition hover:bg-ultramarine-min hover:text-white"
+              className="h-10 w-3/4 rounded-full bg-dark-blue font-bold text-white no-underline transition hover:bg-ultramarine-min hover:text-white"
               type="submit"
             >
               SIGN IN
