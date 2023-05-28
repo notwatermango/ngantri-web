@@ -25,7 +25,7 @@ const TicketDetailsPage: AuthNextPage = () => {
         },
       }
     );
-    setLoadingButton(true);
+    setLoadingButton(false);
   };
 
   const handleBack = async () => {

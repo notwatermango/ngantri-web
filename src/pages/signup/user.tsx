@@ -29,7 +29,6 @@ const UserSignup: NextPage = () => {
       },
       {
         onSuccess: async (ret) => {
-          setLoadingButton(false);
           if (ret.status === "success") {
             await signIn("credentials", {
               email,
@@ -43,6 +42,7 @@ const UserSignup: NextPage = () => {
         },
       }
     );
+    setLoadingButton(false);
   };
 
   return (

@@ -29,7 +29,6 @@ const MerchantSignup: NextPage = () => {
       },
       {
         onSuccess: async (ret) => {
-          setLoadingButton(false);
           if (ret.status === "success") {
             await signIn("credentials", {
               email,
@@ -43,6 +42,7 @@ const MerchantSignup: NextPage = () => {
         },
       }
     );
+    setLoadingButton(false);
   };
 
   return (
